@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Datatable;
+namespace App\View\Components\DataTable;
 
 use Illuminate\View\Component;
 

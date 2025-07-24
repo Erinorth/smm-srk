@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PerformanceEmpolyee extends Model
+class Performance extends Model
 {
     protected $fillable=[
         'project_id',
