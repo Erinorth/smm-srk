@@ -1,1 +1,0 @@
-<button class="btn btn-xs text-success" name="create_record{{$nameID}}" id="create_record{{$nameID}}" title="Add"><i class="fa fa-lg fa-fw fa-plus-square"></i></button>

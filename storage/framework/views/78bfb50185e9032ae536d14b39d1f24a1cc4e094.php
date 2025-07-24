@@ -1,1 +1,0 @@
-<a class="btnprn btn btn-xs btn-default text-info mx-1 shadow" title="Print" href="<?php echo e($url); ?>"><i class="fa fa-lg fa-fw fa-print"></i></a><?php /**PATH D:\xampp\htdocs\smm-srk\storage\framework\views/c1e8cb590369256e9528313f16e18d20d23f81e9.blade.php ENDPATH**/ ?>

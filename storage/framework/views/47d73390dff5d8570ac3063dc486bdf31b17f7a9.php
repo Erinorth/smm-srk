@@ -1,1 +1,0 @@
-<a class="btn btn-xs text-info" href="<?php echo e(URL('consumable_addstores')); ?>" title="Add to Store"><i class="fa fa-lg fa-fw fa-cart-plus"></i></a><?php /**PATH D:\xampp\htdocs\smm-srk\storage\framework\views/61686b7e7221bf63280247bac79c81fa3b557d21.blade.php ENDPATH**/ ?>
