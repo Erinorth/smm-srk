@@ -1,0 +1,1 @@
+<a class="btn btn-xs text-info" href="{{ URL('consumable_addstores') }}" title="Add to Store"><i class="fa fa-lg fa-fw fa-cart-plus"></i></a>

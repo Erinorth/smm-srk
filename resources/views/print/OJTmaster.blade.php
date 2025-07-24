@@ -1,0 +1,79 @@
+@extends('layouts.printl')
+
+@section('title')
+    On the Job Training Master Plan
+@endsection
+
+@section('headscripts')
+    <script src="http://www.position-absolute.com/creation/print/jquery.printPage.js"></script>
+')
+
+@section('css')
+    
+@endsection
+
+@section('content_header')
+    <h1 class="m-0 text-dark">Job</h1>
+@stop
+
+@section('content')
+    <h2 class="text-center">ใบบันทึกรายการความรู้ และทักษะในงานของผู้ปฏิบัติงาน</h2>
+    <div class="table-responsive">
+        <table class="table table-borderless table-sm">
+            <tr>
+                <td class="text-center" style="width:20%">ชื่อ - สกุล</td>
+                <td class="text-center border-bottom" style="width:30%">Master Plan (หบนม-ธ.)</td>
+                <td class="text-center" style="width:20%">หมายเลขประจำตัว</td>
+                <td class="text-center border-bottom" style="width:30%"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th class="text-center">ลำดับที่</th>
+                    <th class="text-center">ปฎิบัติงานในตำแหน่ง</th>
+                    <th class="text-center">ลักษณะงานที่ปฏิบัติ</th>
+                    <th class="text-center">ความรู้และทักษะที่มีในงาน</th>
+                    <th class="text-center">ผู้บันทึก</th>
+                    <th class="text-center">ผู้รับรองข้อมูล</th>
+                    <th class="text-center">วันที่รับรองข้อมูล</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($ojtmaster as $value)
+                    <tr>
+                        <td class="text-center">{{$i}}</td>
+                        <td class="text-center">{{$value->JobPositionName}}</td>
+                        <td>{{$value->TypeofJob}}</td>
+                        <td class="text-center">{{$value->CourseName}}</td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                    </tr>
+                    @php
+                        $i++;
+                    @endphp
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-sm">
+            <tr>
+                <td class="text-center" style="width:33%">รองผู้ว่าการธุรกิจเกี่ยวเนื่อง</td>
+                <td class="text-center">รหัสเอกสาร FM-004/QP-PB-023</td>
+                <td class="text-center" style="width:33%">แก้ไขครั้งที่ 02</td>
+            </tr>
+        </table>
+    </div>
+@endsection
+
+@section('scripts')
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.btnprn').printPage();
+        });
+    </script>
+@endsection

@@ -1,0 +1,174 @@
+@extends('layouts.printl')
+
+@section('title','Overtime')
+
+@section('content')
+    <table class="table table-borderless table-sm">
+        <tr>
+            <td class="text-center"><h4>แผนการทำล่วงเวลา</h4></td>
+        </tr>
+        <tr>
+            <td class="text-center"><h5>ณ วันที่<u>{{ date('d-m-Y', strtotime("now")) }}</u></h5></td>
+        </tr>
+    </table>
+
+    <table class="table table-bordered table-sm">
+        <thead>
+            <tr>
+                <th class="text-center">Project ID</th>
+                <th class="text-center">Project Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center">0</td>
+                <td>ล่วงเวลาสะสม</td>
+            </tr>
+            @foreach ($allproject as $value)
+                <tr>
+                    <td class="text-center">{{ $value->id }}</td>
+                    <td>{{ $value->ProjectName }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <table class="table table-bordered table-sm">
+        @php
+            $d = date('d', strtotime("now"));
+        @endphp
+        <thead>
+            <tr>
+                <td rowspan="2" class="text-center">ลำดับที่</td>
+                <td rowspan="2" class="text-center">หมายเลขประจำตัว</td>
+                <td rowspan="2" colspan="2" class="text-center">ชื่อ - สกุล</td>
+                <td colspan="{{ $dayinmonth }}" class="text-center">วันที่</td>
+                <td rowspan="2" class="text-center">ล่วงเวลาสะสม <br> (ณ วันที่)</td>
+                <td rowspan="2" class="text-center">Total OT</td>
+                <td rowspan="2" class="text-center">กรอบที่ขอไว้ <br> (Update ณ วันที่)</td>
+            </tr>
+            <tr>
+                @for ($i = 1; $i < $dayinmonth + 1; $i++)
+                    <td class="text-center @if ($d == $i) bg-light @endif">{{ $i }}</td>
+                @endfor
+            </tr>
+        </thead>
+        <tbody>
+            @php
+                $j = 1;
+            @endphp
+            @foreach ($plan as $value)
+                <tr>
+                    <td rowspan="2" class="text-center">{{ $j }}</td>
+                    <td rowspan="2" class="text-center">{{ $value->WorkID }}</td>
+                    <td rowspan="2">{{ $value->ThaiName }}</td>
+                    <td class="text-center">Project</td>
+                    <td class="text-center @if ($d == 1) bg-light @endif">{{ $value->Project1 }}</td>
+                    <td class="text-center @if ($d == 2) bg-light @endif">{{ $value->Project2 }}</td>
+                    <td class="text-center @if ($d == 3) bg-light @endif">{{ $value->Project3 }}</td>
+                    <td class="text-center @if ($d == 4) bg-light @endif">{{ $value->Project4 }}</td>
+                    <td class="text-center @if ($d == 5) bg-light @endif">{{ $value->Project5 }}</td>
+                    <td class="text-center @if ($d == 6) bg-light @endif">{{ $value->Project6 }}</td>
+                    <td class="text-center @if ($d == 7) bg-light @endif">{{ $value->Project7 }}</td>
+                    <td class="text-center @if ($d == 8) bg-light @endif">{{ $value->Project8 }}</td>
+                    <td class="text-center @if ($d == 9) bg-light @endif">{{ $value->Project9 }}</td>
+                    <td class="text-center @if ($d == 10) bg-light @endif">{{ $value->Project10 }}</td>
+                    <td class="text-center @if ($d == 11) bg-light @endif">{{ $value->Project11 }}</td>
+                    <td class="text-center @if ($d == 12) bg-light @endif">{{ $value->Project12 }}</td>
+                    <td class="text-center @if ($d == 13) bg-light @endif">{{ $value->Project13 }}</td>
+                    <td class="text-center @if ($d == 14) bg-light @endif">{{ $value->Project14 }}</td>
+                    <td class="text-center @if ($d == 15) bg-light @endif">{{ $value->Project15 }}</td>
+                    <td class="text-center @if ($d == 16) bg-light @endif">{{ $value->Project16 }}</td>
+                    <td class="text-center @if ($d == 17) bg-light @endif">{{ $value->Project17 }}</td>
+                    <td class="text-center @if ($d == 18) bg-light @endif">{{ $value->Project18 }}</td>
+                    <td class="text-center @if ($d == 19) bg-light @endif">{{ $value->Project19 }}</td>
+                    <td class="text-center @if ($d == 20) bg-light @endif">{{ $value->Project20 }}</td>
+                    <td class="text-center @if ($d == 21) bg-light @endif">{{ $value->Project21 }}</td>
+                    <td class="text-center @if ($d == 22) bg-light @endif">{{ $value->Project22 }}</td>
+                    <td class="text-center @if ($d == 23) bg-light @endif">{{ $value->Project23 }}</td>
+                    <td class="text-center @if ($d == 24) bg-light @endif">{{ $value->Project24 }}</td>
+                    <td class="text-center @if ($d == 25) bg-light @endif">{{ $value->Project25 }}</td>
+                    <td class="text-center @if ($d == 26) bg-light @endif">{{ $value->Project26 }}</td>
+                    <td class="text-center @if ($d == 27) bg-light @endif">{{ $value->Project27 }}</td>
+                    <td class="text-center @if ($d == 28) bg-light @endif">{{ $value->Project28 }}</td>
+                    @if ( $dayinmonth >= 29 )
+                        <td class="text-center @if ($d == 29) bg-light @endif">{{ $value->Project29 }}</td>
+                    @endif
+                    @if ( $dayinmonth >= 30 )
+                        <td class="text-center @if ($d == 30) bg-light @endif">{{ $value->Project30 }}</td>
+                    @endif
+                    @if ( $dayinmonth == 31 )
+                        <td class="text-center @if ($d == 31) bg-light @endif">{{ $value->Project31 }}</td>
+                    @endif
+                    <td rowspan="2" class="text-center">{{ number_format($value->SumActual,1) }} <br> ({{ $value->MaxActualDate }})</td>
+                    <td rowspan="2" class="text-center">{{ number_format($value->TotalOT,1) }}</td>
+                    <td rowspan="2" class="text-center">{{ $value->Frame }} <br> ({{ $value->UpdateFrame }})</td>
+                </tr>
+                <tr>
+                    <td class="text-center">OT</td>
+                    @php $x = 0; $x = $x + $value->Plan1;@endphp
+                    <td class="text-center @if ($d == 1) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan1,1) }}</td> @php $x = $x + $value->Plan2; @endphp
+                    <td class="text-center @if ($d == 2) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan2,1) }}</td> @php $x = $x + $value->Plan3; @endphp
+                    <td class="text-center @if ($d == 3) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan3,1) }}</td> @php $x = $x + $value->Plan4; @endphp
+                    <td class="text-center @if ($d == 4) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan4,1) }}</td> @php $x = $x + $value->Plan5; @endphp
+                    <td class="text-center @if ($d == 5) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan5,1) }}</td> @php $x = $x + $value->Plan6; @endphp
+                    <td class="text-center @if ($d == 6) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan6,1) }}</td> @php $x = $x + $value->Plan7; @endphp
+                    <td class="text-center @if ($d == 7) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan7,1) }}</td> @php $x = $x + $value->Plan8; @endphp
+                    <td class="text-center @if ($d == 8) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan8,1) }}</td> @php $x = $x + $value->Plan9; @endphp
+                    <td class="text-center @if ($d == 9) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan9,1) }}</td> @php $x = $x + $value->Plan10; @endphp
+                    <td class="text-center @if ($d == 10) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan10,1) }}</td> @php $x = $x + $value->Plan11; @endphp
+                    <td class="text-center @if ($d == 11) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan11,1) }}</td> @php $x = $x + $value->Plan12; @endphp
+                    <td class="text-center @if ($d == 12) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan12,1) }}</td> @php $x = $x + $value->Plan13; @endphp
+                    <td class="text-center @if ($d == 13) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan13,1) }}</td> @php $x = $x + $value->Plan14; @endphp
+                    <td class="text-center @if ($d == 14) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan14,1) }}</td> @php $x = $x + $value->Plan15; @endphp
+                    <td class="text-center @if ($d == 15) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan15,1) }}</td> @php $x = $x + $value->Plan16; @endphp
+                    <td class="text-center @if ($d == 16) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan16,1) }}</td> @php $x = $x + $value->Plan17; @endphp
+                    <td class="text-center @if ($d == 17) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan17,1) }}</td> @php $x = $x + $value->Plan18; @endphp
+                    <td class="text-center @if ($d == 18) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan18,1) }}</td> @php $x = $x + $value->Plan19; @endphp
+                    <td class="text-center @if ($d == 19) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan19,1) }}</td> @php $x = $x + $value->Plan20; @endphp
+                    <td class="text-center @if ($d == 20) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan20,1)}}</td> @php $x = $x + $value->Plan21; @endphp
+                    <td class="text-center @if ($d == 21) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan21,1) }}</td> @php $x = $x + $value->Plan22; @endphp
+                    <td class="text-center @if ($d == 22) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan22,1) }}</td> @php $x = $x + $value->Plan23; @endphp
+                    <td class="text-center @if ($d == 23) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan23,1) }}</td> @php $x = $x + $value->Plan24; @endphp
+                    <td class="text-center @if ($d == 24) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan24,1) }}</td> @php $x = $x + $value->Plan25; @endphp
+                    <td class="text-center @if ($d == 25) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan25,1) }}</td> @php $x = $x + $value->Plan26; @endphp
+                    <td class="text-center @if ($d == 26) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan26,1) }}</td> @php $x = $x + $value->Plan27; @endphp
+                    <td class="text-center @if ($d == 27) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan27,1) }}</td> @php $x = $x + $value->Plan28; @endphp
+                    <td class="text-center @if ($d == 28) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan28,1) }}</td> @php $x = $x + $value->Plan29; @endphp
+                    @if ( $dayinmonth >= 29 )
+                        <td class="text-center @if ($d == 29) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan29,1) }}</td> @php $x = $x + $value->Plan30; @endphp
+                    @endif
+                    @if ( $dayinmonth >= 30 )
+                        <td class="text-center @if ($d == 30) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan30,1) }}</td> @php $x = $x + $value->Plan31; @endphp
+                    @endif
+                    @if ( $dayinmonth == 31 )
+                        <td class="text-center @if ($d == 31) bg-light @endif @if ($x>90) text-danger @elseif ($x>60) text-warning @elseif ($x>30) text-success @endif">{{ number_format($value->Plan31,1) }}</td>
+                    @endif
+                </tr>
+                @php
+                    $j++;
+                @endphp
+            @endforeach
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-1">
+            *หมายเหตุ
+        </div>
+        <div class="col text-success text-left">
+            - สีเขียวหมายถึงล่วงเวลาสะสม 30 - 60 ชั่วโมง
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col text-warning text-left">
+            - สีเหลืองหมายถึงล่วงเวลาสะสม 60 - 90 ชั่วโมง
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col text-danger text-left">
+            - สีแดงหมายถึงล่วงเวลาสะสมมากกว่า 90 ชั่วโมง
+        </div>
+    </div>
+@endsection

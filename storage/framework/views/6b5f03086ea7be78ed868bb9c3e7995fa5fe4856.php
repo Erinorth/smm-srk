@@ -1,0 +1,2 @@
+$('#<?php echo e($name); ?>').val(data.result.<?php echo e($name); ?>);
+$('#<?php echo e($name); ?>').trigger('change');<?php /**PATH D:\xampp\htdocs\smm-srk\storage\framework\views/b3f4d0e5207abee65ba4ea134c9ad3061fa8b408.blade.php ENDPATH**/ ?>

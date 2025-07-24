@@ -1,0 +1,104 @@
+@extends('adminlte::page')
+
+@section('title','Stakeholder')
+
+@section('content_header')
+    <h1 class="m-0 text-dark">Stakeholder</h1>
+@stop
+
+@section('content')
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <x-adminlte-card title="Print" theme="primary" icon="" collapsible="collapsed" removable maximizable>
+                    <div class="row">
+                        <div class="col">
+                            <a href="{{ url('stakeholder_project/'.$project->id) }}" class="btnprn btn btn-info btn-block btn-sm">FM-001/QP-PB-038</a>
+                        </div>
+                        <div class="col">
+                            <a href="{{ url('factor_project/'.$project->id) }}" class="btnprn btn btn-info btn-block btn-sm">FM-001/QP-PB-039</a>
+                        </div>
+                    </div>
+                </x-adminlte-card>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <x-adminlte-card title="ผู้มีส่วนได้เสีย" theme="red" collapsible removable maximizable>
+                    <x-slot name="toolsSlot">
+                        <x-button.create-record name-i-d=""/>
+                    </x-slot>
+                    <x-data-table.data-table name-i-d="">
+                        <th>Product Name</th>
+                        <th>Stakeholder Name</th>
+                        <th>Stakeholder Type</th>
+                        <th>Action</th>
+                        <x-slot name="othertable">
+                        </x-slot>
+                    </x-data-table.data-table>
+                </x-adminlte-card>
+            </div>
+        </div>
+    </div>
+
+    <x-modal.input-form name-i-d="" modal-title="Add New Stakeholder">
+        <x-input.dropdown title="Product" name-id="product_id">
+            <option></option>
+            @foreach ($product as $value)
+                <option value="{{$value->id}}">{{$value->ProductCode}} // {{$value->ProductName}}</option>
+            @endforeach
+        </x-input.dropdown>
+
+        <x-input.dropdown title="Stakeholder" name-id="stakeholder_id">
+            <option></option>
+            @foreach ($stakeholder as $value)
+                <option value="{{$value->id}}">{{$value->StakeholderName}}</option>
+            @endforeach
+        </x-input.dropdown>
+
+        <x-slot name="othervalue">
+            <input type="hidden" name="project_id" id="project_id" value="{{$project->id}}"/>
+        </x-slot>
+    </x-modal.input-form>
+
+    <x-modal.confirm-delete delete-name=""/>
+
+    @php
+        $tabledata = [
+            ['<a href="'. url('storage/user_manual/การประเมินผู้มีส่วนได้เสีย และความเสี่ยงในภาพรวมก่อนเริ่มงาน.pdf').'">การประเมินผู้มีส่วนได้เสีย และความเสี่ยงในภาพรวมก่อนเริ่มงาน</a>',null]
+        ];
+    @endphp
+    <x-content.manual :tableData="$tabledata"></x-content.manual>
+@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function(){
+
+            <x-data-table.data-table-script table-name="" ajax-url="">
+                <x-data-table.column-script column-name="ProductName"/>
+                <x-data-table.column-script column-name="StakeholderName"/>
+                <x-data-table.column-script column-name="TypeName">
+                    orderable: false
+                </x-data-table.column-script>
+                <x-data-table.column-script column-name="action">
+                    orderable: false
+                </x-data-table.column-script>
+                <x-slot name="order">[0,'asc']</x-slot>
+            </x-data-table.data-table-script>
+
+            <x-data-table.create-script name-i-d="" title="Stakeholder"/>
+
+            <x-data-table.submit-script name-i-d="" action-url="QSH_stakeholder_projects">
+                <x-data-table.ajax-reload-script table-id=""/>
+            </x-data-table.submit-script>
+
+            <x-data-table.edit-script edit-name=""  edit-url="QSH_stakeholder_projects">
+                <x-data-table.edit-value-script name="product_id"/>
+                <x-data-table.edit-value-script name="stakeholder_id"/>
+            </x-data-table.edit-script>
+
+            <x-data-table.delete-script delete-name="" url="QSH_stakeholder_projects"/>
+        });
+    </script>
+@endsection

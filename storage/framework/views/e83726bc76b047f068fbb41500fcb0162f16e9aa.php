@@ -1,0 +1,1 @@
+$('#data_table<?php echo e($tableId); ?>').DataTable().ajax.reload();<?php /**PATH D:\xampp\htdocs\smm-srk\storage\framework\views/b122c623fb45714eadaf27f6c7756e1d6bbe41fd.blade.php ENDPATH**/ ?>

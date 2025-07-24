@@ -1,0 +1,49 @@
+@extends('layouts.print')
+
+@section('title','Tool List')
+
+@section('content')
+    <table class="table table-bordered table-sm">
+        @foreach ($project as $value)
+        <tr>
+            <td rowspan="2" class="text-center align-middle" style="width:10%"> <img src="/img/EGAT.png" height="60"> </td>
+            <td rowspan="2" class="text-center align-middle" style="width:25%"><h4>Tool List</h4></td>
+            <td colspan="2"> Project : {{ $value->ProjectName }} </td>
+        </tr>
+        <tr>
+            <td style="width:32.5%"> Start Date : {{date('d-m-Y', strtotime($value->StartDate))}}</td>
+            <td style="width:32.5%"> Finish Date : {{date('d-m-Y', strtotime($value->FinishDate))}}</td>
+        </tr>
+        @endforeach
+    </table>
+    <table class="table table-bordered table-sm">
+        <thead>
+            <tr>
+                <td class="text-center">No.</td>
+                <td class="text-center">ชื่อเครื่องมือ</td>
+                <td class="text-center">ขนาด</td>
+                <td class="text-center">จำนวน</td>
+                <td class="text-center">หน่วย</td>
+                <td class="text-center">Remark</td>
+            </tr>
+        </thead>
+        <tbody>
+            @php
+                $i = 1;
+            @endphp
+            @foreach ($tool as $value)
+                <tr>
+                    <td class="text-center">{{$i}}</td>
+                    <td>{{$value->CatagoryName}}</td>
+                    <td class="text-center">{{$value->RangeCapacity}}</td>
+                    <td class="text-center">{{$value->PickQuantity}}</td>
+                    <td class="text-center">{{$value->Unit}}</td>
+                    <td>{{$value->Remark}}</td>
+                </tr>
+                @php
+                    $i++;
+                @endphp
+            @endforeach
+        </tbody>
+    </table>
+@endsection

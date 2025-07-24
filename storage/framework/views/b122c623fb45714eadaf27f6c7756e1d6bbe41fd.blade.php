@@ -1,0 +1,1 @@
+$('#data_table{{$tableId}}').DataTable().ajax.reload();

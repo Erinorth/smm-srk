@@ -1,0 +1,1 @@
+<button class="btn btn-xs text-success" name="create_record<?php echo e($nameID); ?>" id="create_record<?php echo e($nameID); ?>" title="Add"><i class="fa fa-lg fa-fw fa-plus-square"></i></button><?php /**PATH D:\xampp\htdocs\smm-srk\storage\framework\views/99949cd8f843b2e05d974046cf439022864ff3f8.blade.php ENDPATH**/ ?>

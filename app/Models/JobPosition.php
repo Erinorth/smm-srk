@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class JobPosition extends Model
+{
+    protected $fillable=[
+        'JobPositionName',
+        'TypeofJob',
+        'craft_id'
+    ];
+}
