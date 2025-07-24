@@ -1,28 +1,169 @@
-/.phpunit.cache
-/bootstrap/ssr
+# Laravel Dependencies และ Build Files
+/vendor
 /node_modules
 /public/build
 /public/hot
 /public/storage
+/bootstrap/ssr
+
+# Laravel Cache และ Storage Framework
 /storage/*.key
 /storage/pail
-/vendor
-.env
-.env.backup
-.env.production
-.phpactor.json
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
-/auth.json
-/.fleet
-/.idea
-/.nova
-/.vscode
-/.zed
-export.md
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+!/storage/framework/cache/.gitkeep
+!/storage/framework/sessions/.gitkeep
+!/storage/framework/testing/.gitkeep
+!/storage/framework/views/.gitkeep
+
+# Laravel Storage App - ยกเว้น user manual
+/storage/app/*
+!/storage/app/public/
+!/storage/app/public/user_manual/
+!/storage/app/.gitkeep
+
+# Laravel Logs - ป้องกันไฟล์ log ขนาดใหญ่
 /storage/logs/*.log
 /storage/logs/laravel*.log
 /storage/logs/lumen*.log
+!/storage/logs/.gitkeep
+
+# Environment Files
+.env
+.env.backup
+.env.production
+.env.local
+.env.staging
+.env.testing
+
+# Laravel Specific Files
+.phpunit.result.cache
+/.phpunit.cache
+/auth.json
+/bootstrap/cache/*.php
+!/bootstrap/cache/.gitkeep
+
+# Database Files (สำหรับ SQLite ถ้าใช้)
+*.sqlite
+*.sqlite3
+/database/*.sqlite
+/database/*.sqlite3
+
+# Composer Files
+composer.phar
+composer.lock
+
+# NPM และ Yarn
+npm-debug.log
+yarn-error.log
+yarn.lock
+package-lock.json
+
+# Testing และ Coverage
+/coverage/
+/.phpunit.cache
+/phpunit.xml
+/tests/coverage/
+/.coverage_data
+
+# IDE Files - รองรับ IDE หลายตัว
+/.idea
+/.vscode
+/.nova
+/.fleet
+/.zed
+.phpactor.json
+*.swp
+*.swo
+*~
+
+# Laravel Homestead
+Homestead.json
+Homestead.yaml
+Vagrantfile
+
+# OS Generated Files - Windows Specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# OS Generated Files - General
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.fuse_hidden*
+.directory
+.Trash-*
+
+# Backup Files
+*.bak
+*.backup
+*.old
+*.orig
+*.tmp
+*~
+.#*
+#*#
+
+# Log Files อื่นๆ
+*.log
+/logs/
+access.log
+error.log
+
+# Export Files
+export.md
+export.txt
+export.json
+/exports/
+
+# Laravel Mix และ Assets
+/public/js/*.js
+/public/css/*.css
+/public/mix-manifest.json
+!/public/js/.gitkeep
+!/public/css/.gitkeep
+
+# Laravel Telescope (ถ้าใช้)
+/storage/telescope/
+
+# Laravel Horizon (ถ้าใช้)
+/storage/horizon/
+
+# Laravel Debugbar (ถ้าใช้)
+/storage/debugbar/
+
+# Session Files
+/storage/sessions/
+php_session*
+
+# Temporary Files
+/tmp/
+/temp/
+*.tmp
+*.temp
+
+# Security Files
+/storage/oauth-*.key
+*.pem
+*.key
+*.crt
+*.p12
+
+# XAMPP Specific Files (เฉพาะ Windows Server)
+/xampp/
+/apache/
+/mysql/
+/php/
+htaccess.backup
+.htaccess.bak
