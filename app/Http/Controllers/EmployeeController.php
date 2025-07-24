@@ -13,6 +13,7 @@ use Auth;
 use DB;
 use DataTables;
 use Validator;
+use Illuminate\Support\Facades\Log;
 
 class EmployeeController extends Controller
 {
@@ -506,35 +507,68 @@ class EmployeeController extends Controller
         }
     }
 
-    public function departmentupdate(Request $request, Department $id)
+    public function departmentupdate(Request $request)
     {
-        $rules = array(
-            'DepartmentName'=>'required',
-            'Section'=>'required',
-            'Department'=>'required',
-            'Division'=>'required',
-            'Business'=>'required'
-        );
+        try {
+            // ตรวจสอบว่ามี hidden_id_department ส่งมาหรือไม่
+            if (!$request->has('hidden_id_department') || empty($request->hidden_id_department)) {
+                Log::error('Department update failed: No hidden_id_department provided');
+                return response()->json(['errors' => ['ไม่พบรหัสแผนกที่ต้องการแก้ไข']]);
+            }
 
-        $error = Validator::make($request->all(), $rules);
+            Log::info('Attempting to update department ID: ' . $request->hidden_id_department);
 
-        if($error->fails())
-        {
-            return response()->json(['errors' => $error->errors()->all()]);
+            // กำหนด validation rules
+            $rules = array(
+                'hidden_id_department' => 'required|integer|exists:departments,id', // ตรวจสอบว่า ID มีอยู่ใน database
+                'Code' => 'required|string|max:50',
+                'DepartmentName' => 'required|string|max:255',
+                'Section' => 'nullable|string|max:255',
+                'Department' => 'nullable|string|max:255',
+                'Division' => 'nullable|string|max:255',
+                'Business' => 'nullable|string|max:255'
+            );
+
+            // ตรวจสอบ validation
+            $error = Validator::make($request->all(), $rules);
+
+            if($error->fails())
+            {
+                Log::error('Department update validation failed: ' . json_encode($error->errors()));
+                return response()->json(['errors' => $error->errors()->all()]);
+            }
+
+            // หาข้อมูล department ที่ต้องการแก้ไข
+            $department = Department::findOrFail($request->hidden_id_department);
+            
+            Log::info('Found department: ' . $department->DepartmentName);
+
+            // เตรียมข้อมูลสำหรับอัพเดท
+            $form_data = array(
+                'Code' => $request->Code,
+                'DepartmentName' => $request->DepartmentName,
+                'Section' => $request->Section,
+                'Department' => $request->Department,
+                'Division' => $request->Division,
+                'Business' => $request->Business,
+                'updated_at' => now() // บันทึกเวลาที่อัพเดท
+            );
+
+            // อัพเดทข้อมูล
+            $department->update($form_data);
+            
+            Log::info('Department updated successfully - ID: ' . $department->id . ', Name: ' . $department->DepartmentName);
+
+            return response()->json(['success' => 'แก้ไขข้อมูลแผนกสำเร็จ']);
+
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            Log::error('Department not found for update: ' . $e->getMessage());
+            return response()->json(['errors' => ['ไม่พบข้อมูลแผนกที่ต้องการแก้ไข']], 404);
+            
+        } catch (\Exception $e) {
+            Log::error('Error updating department: ' . $e->getMessage());
+            return response()->json(['errors' => ['เกิดข้อผิดพลาดในการบันทึกข้อมูล: ' . $e->getMessage()]], 500);
         }
-
-        $form_data = array(
-            'Code' => $request->Code,
-            'DepartmentName' => $request->DepartmentName,
-            'Section' => $request->Section,
-            'Department' => $request->Department,
-            'Division' => $request->Division,
-            'Business' => $request->Business
-        );
-
-        Department::whereId($request->hidden_id)->update($form_data);
-
-        return response()->json(['success' => 'Data Added successfully.']);
     }
 
     public function departmentdestroy($id)

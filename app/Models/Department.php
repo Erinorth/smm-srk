@@ -8,10 +8,16 @@ class Department extends Model
 {
     protected $fillable=[
         'Code',
-        'DepartmentName',
+        'DepartmentName', 
         'Section',
         'Department',
         'Division',
         'Business'
     ];
+    
+    // เพิ่ม relationship กับ Employee ถ้ายังไม่มี
+    public function employees()
+    {
+        return $this->hasMany(Employee::class);
+    }
 }
