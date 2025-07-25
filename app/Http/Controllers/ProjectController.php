@@ -18,13 +18,11 @@ class ProjectController extends Controller
             FROM employees
                 INNER JOIN departments
                 ON employees.department_id = departments.id
-            WHERE departments.Department = "กฟนม-ธ."
             ORDER BY employees.ThaiName');
         $areamanager = DB::select('SELECT employees.id, employees.ThaiName
             FROM employees
                 INNER JOIN departments
                 ON employees.department_id = departments.id
-            WHERE departments.Department = "กฟนม-ธ."
             ORDER BY employees.ThaiName');
 
         $type = ProjectType::orderBy('TypeName')->get();
