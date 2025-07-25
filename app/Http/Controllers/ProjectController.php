@@ -16,13 +16,9 @@ class ProjectController extends Controller
     {
         $siteengineer = DB::select('SELECT employees.id, employees.ThaiName
             FROM employees
-                INNER JOIN departments
-                ON employees.department_id = departments.id
             ORDER BY employees.ThaiName');
         $areamanager = DB::select('SELECT employees.id, employees.ThaiName
             FROM employees
-                INNER JOIN departments
-                ON employees.department_id = departments.id
             ORDER BY employees.ThaiName');
 
         $type = ProjectType::orderBy('TypeName')->get();
