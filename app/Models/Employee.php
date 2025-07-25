@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
+    protected $table = 'employees';
+
     protected $fillable = [
         'user_id',
         'WorkID',
@@ -26,5 +28,21 @@ class Employee extends Model
     public function user()
     {
         return $this->belongsTo(\App\User::class);
+    }
+
+    /**
+     * โปรเจคที่เป็น Site Engineer
+     */
+    public function siteEngineerProjects()
+    {
+        return $this->hasMany(Project::class, 'SiteEngineer', 'id');
+    }
+
+    /**
+     * โปรเจคที่เป็น Area Manager
+     */
+    public function areaManagerProjects()
+    {
+        return $this->hasMany(Project::class, 'AreaManager', 'id');
     }
 }

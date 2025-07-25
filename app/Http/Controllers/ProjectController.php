@@ -9,6 +9,7 @@ use App\Models\ProjectType;
 use DB;
 use DataTables;
 use Validator;
+use Illuminate\Support\Facades\Log;
 
 class ProjectController extends Controller
 {
@@ -88,112 +89,150 @@ class ProjectController extends Controller
         return View('projects.index',compact('siteengineer','areamanager','type'));
     }
 
+    /**
+     * เตรียมข้อมูลโปรเจคสำหรับ DataTable
+     * แสดงเฉพาะโปรเจคที่วันเริ่มต้นยังไม่ถึง
+     */
     public function prepare(Request $request)
     {
-        if($request->ajax())
-        {
-            $data = DB::select('SELECT projects.id, projects.ProjectName, project_types.TypeName, projects.StartDate, projects.FinishDate, projects.Status, DateDiff(projects.StartDate,NOW()) AS StartDiff, DateDiff(projects.FinishDate,NOW()) AS FinishDiff, employees.ThaiName AS AreaManager, employees2.ThaiName AS SiteEngineer, projects.KeyDate, projects.KeyDatePath
-                FROM projects
-                    LEFT JOIN project_types
-                    ON projects.project_type_id = project_types.id
-                    LEFT JOIN employees
-                    ON projects.AreaManager = employees.id
-                    LEFT JOIN (SELECT employees.id, employees.ThaiName
-                        FROM employees) AS employees2
-                    ON projects.SiteEngineer = employees2.id
-                    LEFT JOIN (SELECT project_id, COUNT(project_id) AS count_project_id
-                        FROM mile_stones
-                        GROUP BY project_id) AS mile_stone
-                    ON projects.id = mile_stone.project_id
-                WHERE projects.Status="Confirmed" AND DateDiff(projects.FinishDate,NOW())>0 AND (DateDiff(projects.StartDate,NOW())>0 OR ISNULL(mile_stone.count_project_id))');
-            return DataTables::of($data)
-                ->editColumn('ProjectName', function($data) {
-                    if ($data->StartDiff > 60)
-                    return '<div class="text-success">'.$data->ProjectName.'</div>';
-                    if ($data->StartDiff > 30)
-                    return '<div class="text-warning">'.$data->ProjectName.'</div>';
-                    return '<div class="text-danger">'.$data->ProjectName.'</div>';
-                })
-                ->editColumn('TypeName', function($data) {
-                    return '<div class="text-center">'.$data->TypeName.'</div>';
-                })
-                ->editColumn('StartDate', function($data) {
-                    return '<div class="text-center">'.$data->StartDate.'</div>';
-                })
-                ->editColumn('FinishDate', function($data) {
-                    return '<div class="text-center">'.$data->FinishDate.'</div>';
-                })
-                ->editColumn('Responsible', function($data) {
-                    if ( $data->AreaManager == "" ) {
-                        $areamanager = "ยังไม่ได้กำหนด";
-                    } else {
-                        $areamanager = $data->AreaManager;
-                    }
-                    if ( $data->SiteEngineer == "" ) {
-                        $siteengineer = "ยังไม่ได้กำหนด";
-                    } else {
-                        $siteengineer = $data->SiteEngineer;
-                    }
-                    if ( $areamanager == $siteengineer ) {
-                        return '<div class="text-center">'.$areamanager.'</div>';
-                    } else {
-                        return '<div class="text-center">'.$areamanager.'/'.$siteengineer.'</div>';
-                    }
-                })
-                ->editColumn('KeyDate', function($data) {
-                    if ( in_array($data->TypeName,array("บำรุงรักษาพลังน้ำในประเทศ","บำรุงรักษาพลังน้ำต่างประเทศ","บำรุงรักษาพลังลมในประเทศ","บำรุงรักษาเครนในประเทศ","บำรุงรักษาใต้น้ำ","Governor Performance Test")) ) {
-                        if ( $data->KeyDate == "" ) {
-                            return '
-                            <div class="text-center">
-                                <button class="keydate btn btn-xs btn-default text-success mx-1 shadow" name="attachment" id="'.$data->id.'" title="Add Attachment"><i class="fa fa-lg fa-fw fa-plus"></i></button>
-                            </div>';
-                        } else {
-                            return '
-                            <div class="text-center">
-                                <a href="'. url('storage/'.$data->KeyDatePath.$data->KeyDate.'').'" class="btn btn-xs btn-default text-info mx-1 shadow" title="Show Attachment"><i class="fa fa-lg fa-fw fa-eye"></i></a>
-                                <button class="edit_keydate btn btn-xs btn-default text-warning mx-1 shadow" name="attachment" id="'.$data->id.'" title="Edit Attachment"><i class="fa fa-lg fa-fw fa-pen"></i></button>
-                                <button class="delete_keydate btn btn-xs btn-default text-danger mx-1 shadow" name="attachment" id="'.$data->id.'" title="Delete Attachment"><i class="fa fa-lg fa-fw fa-trash"></i></button>
-                            </div>';
+        // ตรวจสอบว่าเป็น AJAX request หรือไม่
+        if($request->ajax()) {
+            Log::info('Project prepare method called via AJAX');
+            
+            try {
+                // ดึงข้อมูลโปรเจคที่วันเริ่มต้นยังไม่ถึงโดยใช้ Eloquent
+                $projects = Project::select([
+                        'projects.id',
+                        'projects.ProjectName',
+                        'project_types.TypeName',
+                        'projects.StartDate',
+                        'projects.FinishDate',
+                        'projects.Status',
+                        DB::raw('DATEDIFF(projects.StartDate, NOW()) AS StartDiff'),
+                        DB::raw('DATEDIFF(projects.FinishDate, NOW()) AS FinishDiff'),
+                        'area_manager.ThaiName AS AreaManager',
+                        'site_engineer.ThaiName AS SiteEngineer',
+                        'projects.KeyDate',
+                        'projects.KeyDatePath'
+                    ])
+                    // เชื่อมกับตาราง project_types
+                    ->leftJoin('project_types', 'projects.project_type_id', '=', 'project_types.id')
+                    // เชื่อมกับตาราง employees สำหรับ Area Manager
+                    ->leftJoin('employees as area_manager', 'projects.AreaManager', '=', 'area_manager.id')
+                    // เชื่อมกับตาราง employees สำหรับ Site Engineer
+                    ->leftJoin('employees as site_engineer', 'projects.SiteEngineer', '=', 'site_engineer.id')
+                    // เชื่อมกับ subquery ของ mile_stones
+                    ->leftJoin(DB::raw('(SELECT project_id, COUNT(project_id) AS count_project_id FROM mile_stones GROUP BY project_id) AS mile_stone'), 'projects.id', '=', 'mile_stone.project_id')
+                    // เงื่อนไขการกรอง: Status = Confirmed, วันจบยังไม่ผ่าน, วันเริ่มยังไม่ถึง
+                    ->where('projects.Status', 'Confirmed')
+                    ->whereRaw('DATEDIFF(projects.FinishDate, NOW()) > 0')
+                    ->whereRaw('DATEDIFF(projects.StartDate, NOW()) > 0') // เงื่อนไขหลัก: แสดงเฉพาะวันเริ่มต้นที่ยังไม่ถึง
+                    ->get();
+
+                Log::info('Projects data retrieved successfully', ['count' => $projects->count()]);
+
+                // สร้าง DataTable response
+                return DataTables::of($projects)
+                    // จัดรูปแบบชื่อโปรเจค ตามจำนวนวันที่เหลือ
+                    ->editColumn('ProjectName', function($data) {
+                        if ($data->StartDiff > 60) {
+                            return '<div class="text-success">'.$data->ProjectName.'</div>';
                         }
-                    }
-                })
-                ->addColumn('MileStone', function($data) {
-                    return '
+                        if ($data->StartDiff > 30) {
+                            return '<div class="text-warning">'.$data->ProjectName.'</div>';
+                        }
+                        return '<div class="text-danger">'.$data->ProjectName.'</div>';
+                    })
+                    // จัดรูปแบบประเภทโปรเจค
+                    ->editColumn('TypeName', function($data) {
+                        return '<div class="text-center">'.$data->TypeName.'</div>';
+                    })
+                    // จัดรูปแบบวันที่เริ่ม
+                    ->editColumn('StartDate', function($data) {
+                        return '<div class="text-center">'.$data->StartDate.'</div>';
+                    })
+                    // จัดรูปแบบวันที่จบ
+                    ->editColumn('FinishDate', function($data) {
+                        return '<div class="text-center">'.$data->FinishDate.'</div>';
+                    })
+                    // จัดรูปแบบผู้รับผิดชอบ
+                    ->editColumn('Responsible', function($data) {
+                        $areamanager = empty($data->AreaManager) ? "ยังไม่ได้กำหนด" : $data->AreaManager;
+                        $siteengineer = empty($data->SiteEngineer) ? "ยังไม่ได้กำหนด" : $data->SiteEngineer;
+                        
+                        if ($areamanager == $siteengineer) {
+                            return '<div class="text-center">'.$areamanager.'</div>';
+                        } else {
+                            return '<div class="text-center">'.$areamanager.'/'.$siteengineer.'</div>';
+                        }
+                    })
+                    // จัดรูปแบบ Key Date
+                    ->editColumn('KeyDate', function($data) {
+                        // ประเภทโปรเจคที่สามารถใส่ Key Date ได้
+                        $allowedTypes = [
+                            "บำรุงรักษาพลังน้ำในประเทศ",
+                            "บำรุงรักษาพลังน้ำต่างประเทศ",
+                            "บำรุงรักษาพลังลมในประเทศ",
+                            "บำรุงรักษาเครนในประเทศ",
+                            "บำรุงรักษาใต้น้ำ",
+                            "Governor Performance Test"
+                        ];
+                        
+                        if (in_array($data->TypeName, $allowedTypes)) {
+                            if (empty($data->KeyDate)) {
+                                // ปุ่มเพิ่ม Key Date
+                                return '
+                                <div class="text-center">
+                                    <button class="keydate btn btn-xs btn-default text-success mx-1 shadow" name="attachment" id="'.$data->id.'" title="Add Attachment"><i class="fa fa-lg fa-fw fa-plus"></i></button>
+                                </div>';
+                            } else {
+                                // ปุ่มดู แก้ไข ลบ Key Date
+                                return '
+                                <div class="text-center">
+                                    <a href="'. url('storage/'.$data->KeyDatePath.$data->KeyDate.'').'" class="btn btn-xs btn-default text-info mx-1 shadow" title="Show Attachment"><i class="fa fa-lg fa-fw fa-eye"></i></a>
+                                    <button class="edit_keydate btn btn-xs btn-default text-warning mx-1 shadow" name="attachment" id="'.$data->id.'" title="Edit Attachment"><i class="fa fa-lg fa-fw fa-pen"></i></button>
+                                    <button class="delete_keydate btn btn-xs btn-default text-danger mx-1 shadow" name="attachment" id="'.$data->id.'" title="Delete Attachment"><i class="fa fa-lg fa-fw fa-trash"></i></button>
+                                </div>';
+                            }
+                        }
+                        return '';
+                    })
+                    // เพิ่มคอลัมน์ Mile Stone
+                    ->addColumn('MileStone', function($data) {
+                        return '
+                        <div class="text-center">
+                            <a class="btn btn-xs btn-default text-primary mx-1 shadow" title="Mile Stone" href="'. url('projects_milestone/'.$data->id).'"><i class="fa fa-lg fa-fw fa-tasks"></i></a>
+                        </div>';
+                    })
+                    // เพิ่มคอลัมน์ Action ตาม permission
+                    ->addColumn('action','
                     <div class="text-center">
-                        <a class="btn btn-xs btn-default text-primary mx-1 shadow" title="Mile Stone" href="'. url('projects_milestone/'.$data->id).'"><i class="fa fa-lg fa-fw fa-tasks"></i></a>
-                    </div>';
-                })
-                ->addColumn('action','
-                <div class="text-center">
-                    <a href="'. url('projects/{{$id}}').'" class="btn btn-xs btn-default text-info mx-1 shadow" title="Details"><i class="fa fa-lg fa-fw fa-eye"></i></a>
-                    @role('."'planner|admin|head_engineering'".')
-                        <button class="edit btn btn-xs btn-default text-warning mx-1 shadow" name="edit" id="{{$id}}" title="Edit"><i class="fa fa-lg fa-fw fa-pen"></i></button>
-                        @role('."'admin|head_engineering'".')
-                            <button class="delete btn btn-xs btn-default text-danger mx-1 shadow" name="edit" id="{{$id}}" title="Delete"><i class="fa fa-lg fa-fw fa-trash"></i></button>
+                        <a href="'. url('projects/{{$id}}').'" class="btn btn-xs btn-default text-info mx-1 shadow" title="Details"><i class="fa fa-lg fa-fw fa-eye"></i></a>
+                        @role('."'planner|admin|head_engineering'".')
+                            <button class="edit btn btn-xs btn-default text-warning mx-1 shadow" name="edit" id="{{$id}}" title="Edit"><i class="fa fa-lg fa-fw fa-pen"></i></button>
+                            @role('."'admin|head_engineering'".')
+                                <button class="delete btn btn-xs btn-default text-danger mx-1 shadow" name="edit" id="{{$id}}" title="Delete"><i class="fa fa-lg fa-fw fa-trash"></i></button>
+                            @endrole
                         @endrole
-                    @endrole
-                </div>
-                ')
-                ->rawColumns(['ProjectName','TypeName','StartDate','FinishDate','Responsible','KeyDate','MileStone','action'])
-                ->make(true);
+                    </div>
+                    ')
+                    // กำหนดคอลัมน์ที่อนุญาตให้ใช้ HTML
+                    ->rawColumns(['ProjectName','TypeName','StartDate','FinishDate','Responsible','KeyDate','MileStone','action'])
+                    ->make(true);
 
-
+            } catch (\Exception $e) {
+                Log::error('Error in project prepare method', [
+                    'error' => $e->getMessage(),
+                    'line' => $e->getLine(),
+                    'file' => $e->getFile()
+                ]);
+                
+                return response()->json(['error' => 'เกิดข้อผิดพลาดในการดึงข้อมูล'], 500);
+            }
         }
-        $data2 = DB::select('SELECT projects.id, projects.ProjectName, project_types.TypeName, projects.StartDate, projects.FinishDate, projects.Status, DateDiff(projects.StartDate,NOW()) AS StartDiff, DateDiff(projects.FinishDate,NOW()) AS FinishDiff, employees.ThaiName AS AreaManager, employees2.ThaiName AS SiteEngineer
-                FROM projects
-                    LEFT JOIN project_types
-                    ON projects.project_type_id = project_types.id
-                    LEFT JOIN employees
-                    ON projects.AreaManager = employees.id
-                    LEFT JOIN (SELECT employees.id, employees.ThaiName
-                        FROM employees) AS employees2
-                    ON projects.SiteEngineer = employees2.id
-                    LEFT JOIN (SELECT project_id, COUNT(project_id) AS count_project_id
-                        FROM mile_stones
-                        GROUP BY project_id) AS mile_stone
-                    ON projects.id = mile_stone.project_id
-                WHERE projects.Status="Confirmed" AND mile_stone.count_project_id=0');
-            dd($data2);
+        
+        Log::warning('Project prepare method called without AJAX');
+        return response()->json(['error' => 'Invalid request'], 400);
     }
 
     public function inprogress(Request $request)

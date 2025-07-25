@@ -56,8 +56,12 @@ blade;
 
     public function projectdetail()
     {
-        $projectdetail = DB::select('SELECT projects.id, projects.ProjectName, projects.StartDate, projects.FinishDate, employees.ThaiName AS PlannerName, employees_1.ThaiName AS SiteEngineerName, employees_2.ThaiName AS AreaManagerName, projects.Status
-            FROM employees AS employees_2 RIGHT JOIN (employees AS employees_1 RIGHT JOIN (employees RIGHT JOIN projects ON employees.id = projects.Planner) ON employees_1.id = projects.SiteEngineer) ON employees_2.id = projects.AreaManager
+        $projectdetail = DB::select('SELECT projects.id, projects.ProjectName, projects.StartDate, projects.FinishDate, employees_1.ThaiName AS SiteEngineerName, employees_2.ThaiName AS AreaManagerName, projects.Status
+            FROM employees AS employees_2
+            RIGHT JOIN (employees AS employees_1
+            RIGHT JOIN projects
+            ON employees_1.id = projects.SiteEngineer)
+            ON employees_2.id = projects.AreaManager
             WHERE (((projects.id)='.$this->projectId.'))');
 
         return $projectdetail;
