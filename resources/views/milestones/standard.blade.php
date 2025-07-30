@@ -58,16 +58,16 @@
 
             <x-data-table.create-script name-i-d="" title="Add Standard Activity"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="milestone_standards">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/milestone_standards') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="milestone_standards">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/milestone_standards') }}">
                 <x-data-table.edit-value-script name="project_type_id"/>
                 <x-data-table.edit-value-script name="mile_stone_activity_id"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="milestone_standards"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/milestone_standards') }}"/>
         });
     </script>
 @endsection

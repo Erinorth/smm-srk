@@ -153,11 +153,11 @@
 
             <x-data-table.create-script name-i-d="" title="Pick Tool to Site"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="tool_sites">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/tool_sites') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.delete-script delete-name="" url="tool_sites"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/tool_sites') }}"/>
 
             $(document).on('click', '.update', function(){
                 var tool_id2 = $(this).attr('tool_id');
@@ -179,7 +179,7 @@
                 event.preventDefault();
                 var formData = new FormData(this);
                 $.ajax({
-                    url: "/tool_sites/update",
+                    url: "{{ url('/tool_sites/update') }}",
                     method:"POST",
                     data:formData,
                     cache:false,
@@ -221,7 +221,7 @@
             $('#update_form3').on('submit', function(event){
                 event.preventDefault();
                 $.ajax({
-                    url: "/tool_sites/transfer",
+                    url: "{{ url('/tool_sites/transfer') }}",
                     method:"POST",
                     data:$(this).serialize(),
                     dataType:"json",

@@ -144,11 +144,11 @@
 
             <x-data-table.create-script name-i-d="" title="tool_expensive"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="tool_expensive">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/tool_expensive') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="tool_expensive">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/tool_expensive') }}">
                 <x-data-table.edit-value-script name="Date"/>
                 <x-data-table.edit-value-script name="job_id"/>
                 <x-data-table.edit-value-script name="tool_id"/>
@@ -157,7 +157,7 @@
                 <x-data-table.edit-value-script name="Remark"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="tool_expensive"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/tool_expensive') }}"/>
         });
     </script>
 @endsection

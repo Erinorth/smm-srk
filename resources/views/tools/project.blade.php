@@ -65,7 +65,7 @@
                 processing: true,
                 serverSide: true,
                 ajax:{
-                    url: "/tool_amounts/"+projectid,
+                    url: "{{ url('/tool_amounts/') }}"+projectid,
                 },
                 columns: [
                     <x-data-table.column-script column-name="id"/>

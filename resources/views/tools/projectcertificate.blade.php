@@ -94,7 +94,7 @@
             $('#create_form').submit(function(e) {
                 e.preventDefault();
                 var formData = new FormData(this);
-                var action_url = "/employees_certificate_project";
+                var action_url = "{{ url('/employees_certificate_project') }}";
                 $.ajax({
                     type:'POST',
                     url: action_url,

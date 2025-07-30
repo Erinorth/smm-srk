@@ -151,7 +151,7 @@
                 var show_id = $(this).attr('id');
                 $('#form_result').html('');
                 $.ajax({
-                    url :"/tool_PMs/"+show_id,
+                    url :"{{ url('/tool_PMs/') }}"+show_id,
                     data:{
                         _token:'{{ csrf_token() }}'
                     },
@@ -208,7 +208,7 @@
             $('#update_form').on('submit', function(event){
                 event.preventDefault();
                 $.ajax({
-                    url: "/tool_PMs",
+                    url: "{{ url('/tool_PMs') }}",
                     method:"POST",
                     data:$(this).serialize(),
                     dataType:"json",

@@ -125,11 +125,11 @@
                 $('#formModal').modal('show');
             });
 
-            <x-data-table.submit-script name-i-d="" action-url="tool_breakdowns">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/tool_breakdowns') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="tool_breakdowns">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/tool_breakdowns') }}">
                 $('#Operation').summernote('enable');
                 $('#Operator').prop('disabled', false);
                 $('#Result').summernote('enable');
@@ -143,7 +143,7 @@
                 $('#Result').summernote("code", data.result.Result);
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="tool_breakdowns"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/tool_breakdowns') }}"/>
         });
     </script>
 @endsection

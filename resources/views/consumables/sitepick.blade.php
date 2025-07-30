@@ -156,11 +156,11 @@
 
             <x-data-table.create-script name-i-d="" title="Add Pick Consumable"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="consumable_picks">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/consumable_picks') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="consumable_picks">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/consumable_picks') }}">
                 <x-data-table.edit-value-script name="p_m_order_id"/>
                 <x-data-table.edit-value-script name="consumable_id"/>
                 <x-data-table.edit-value-script name="Pick"/>
@@ -168,7 +168,7 @@
                 <x-data-table.edit-value-script name="Remark"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="consumable_picks"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/consumable_picks') }}"/>
         });
     </script>
 @endsection

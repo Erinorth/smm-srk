@@ -213,7 +213,7 @@
                 <x-slot name="order">[7,'asc']</x-slot>
             </x-data-table.data-table-script>
 
-            <x-data-table.data-table-script table-name="_tool_calibrate_all" ajax-url="tool_calibrates_all">
+            <x-data-table.data-table-script table-name="_tool_calibrate_all" ajax-url="{{ url('/tool_calibrates_all') }}">
                 <x-data-table.column-script column-name="id"/>
                 <x-data-table.column-script column-name="CatagoryName"/>
                 <x-data-table.column-script column-name="RangeCapacity"/>
@@ -248,7 +248,7 @@
                 var show_id = $(this).attr('id');
                 $('#form_result').html('');
                 $.ajax({
-                    url :"/tool_calibrates/"+show_id,
+                    url :"{{ url('/tool_calibrates/') }}"+show_id,
                     data:{
                         _token:'{{ csrf_token() }}'
                     },
@@ -310,7 +310,7 @@
             $('#create_form_update').on('submit', function(event){
                 event.preventDefault();
                 var formData = new FormData(this);
-                var action_url = "/tool_calibrates";
+                var action_url = "{{ url('/tool_calibrates') }}";
 
                 $.ajax({
                     type:'POST',
@@ -362,7 +362,7 @@
                 });
             });
 
-            <x-data-table.delete-script delete-name="" url="tool_calibrates"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/tool_calibrates') }}"/>
         });
     </script>
 @endsection

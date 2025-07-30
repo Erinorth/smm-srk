@@ -78,11 +78,11 @@
 
             <x-data-table.create-script name-i-d="" title="Office Milestone"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="milestone_alls">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/milestone_alls') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="milestone_alls">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/milestone_alls') }}">
                 <x-data-table.edit-value-script name="JobName"/>
                 <x-data-table.edit-value-script name="Type"/>
                 <x-data-table.edit-value-script name="StartDate"/>
@@ -92,7 +92,7 @@
                 <x-data-table.edit-value-script name="KPI"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="milestone_alls"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/milestone_alls') }}"/>
         });
     </script>
 @endsection

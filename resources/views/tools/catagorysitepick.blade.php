@@ -137,18 +137,18 @@
 
             <x-data-table.create-script name-i-d="" title="Tool Catagory"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="tool_catagory_sites">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/tool_catagory_sites') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="tool_catagory_sites">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/tool_catagory_sites') }}">
                 <x-data-table.edit-value-script name="tool_catagory_id"/>
                 <x-data-table.edit-value-script name="PickQuantity"/>
                 <x-data-table.edit-value-script name="Group"/>
                 <x-data-table.edit-value-script name="Remark"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="tool_catagory_sites"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/tool_catagory_sites') }}"/>
         });
     </script>
 @endsection

@@ -95,18 +95,18 @@
 
             <x-data-table.create-script name-i-d="" title="Consumable"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="consumable_addstores">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/consumable_addstores') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="consumable_addstores">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/consumable_addstores') }}">
                 <x-data-table.edit-value-script name="consumable_id"/>
                 <x-data-table.edit-value-script name="InOut"/>
                 <x-data-table.edit-value-script name="Quantity"/>
                 <x-data-table.edit-value-script name="Remark"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="consumable_addstores"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/consumable_addstores') }}"/>
         });
     </script>
 @endsection

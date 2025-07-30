@@ -150,11 +150,11 @@
                 <x-slot name="order">[0,'asc']</x-slot>
             </x-data-table.data-table-script>
 
-            <x-data-table.submit-script name-i-d="" action-url="milestone_offices">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/milestone_offices') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="milestone_offices"/>
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/milestone_offices') }}"/>
 
             var show_id;
 
@@ -162,7 +162,7 @@
                 var show_id = $(this).attr('id');
                 $('#form_result2').html('');
                 $.ajax({
-                    url :"/milestone_record/"+show_id,
+                    url :"{{ url('/milestone_record/') }}"+show_id,
                     data:{
                         _token:'{{ csrf_token() }}'
                     },

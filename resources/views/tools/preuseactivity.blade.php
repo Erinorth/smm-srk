@@ -56,16 +56,16 @@
 
             <x-data-table.create-script name-i-d="" title="Add New Tool Pre Use Activity"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="tool_pre_use_activities">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/tool_pre_use_activities') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="tool_pre_use_activities">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/tool_pre_use_activities') }}">
                 <x-data-table.edit-value-script name="Activity"/>
                 <x-data-table.edit-value-script name="Remark"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="tool_pre_use_activities"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/tool_pre_use_activities') }}"/>
         });
     </script>
 @endsection

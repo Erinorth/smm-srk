@@ -216,11 +216,11 @@
 
             <x-data-table.create-script name-i-d="" title="Tool"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="tools">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/tools') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="tools">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/tools') }}">
                 <x-data-table.edit-value-script name="department_id"/>
                 <x-data-table.edit-value-script name="LocalCode"/>
                 <x-data-table.edit-value-script name="Brand"/>
@@ -235,7 +235,7 @@
                 <x-data-table.edit-value-script name="Responsible"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="tools"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/tools') }}"/>
 
             var show_id;
 
@@ -243,7 +243,7 @@
                 var show_id = $(this).attr('id');
                 $('#form_result2').html('');
                 $.ajax({
-                    url :"/tool_historys/"+show_id,
+                    url :"{{ url('/tool_historys/') }}"+show_id,
                     data:{
                         _token:'{{ csrf_token() }}'
                     },
@@ -303,7 +303,7 @@
             $('#update_form').on('submit', function(event){
                 event.preventDefault();
                 $.ajax({
-                    url: "/tool_historys",
+                    url: "{{ url('/tool_historys') }}",
                     method:"POST",
                     data:$(this).serialize(),
                     dataType:"json",

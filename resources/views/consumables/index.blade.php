@@ -123,11 +123,11 @@
 
             <x-data-table.create-script name-i-d="" title="consumables"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="consumables">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/consumables') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="consumables">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/consumables') }}">
                 <x-data-table.edit-value-script name="ConsumableName"/>
                 <x-data-table.edit-value-script name="Detail"/>
                 <x-data-table.edit-value-script name="Unit"/>
@@ -139,7 +139,7 @@
                 <x-data-table.edit-value-script name="Max"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="consumables"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/consumables') }}"/>
         });
     </script>
 @endsection

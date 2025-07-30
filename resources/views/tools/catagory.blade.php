@@ -171,11 +171,11 @@
 
             <x-data-table.create-script name-i-d="" title="Tool Catagory"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="tool_catagories">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/tool_catagories') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="tool_catagories">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/tool_catagories') }}">
                 <x-data-table.edit-value-script name="CatagoryName"/>
                 <x-data-table.edit-value-script name="RangeCapacity"/>
                 <x-data-table.edit-value-script name="Unit"/>
@@ -185,7 +185,7 @@
                 <x-data-table.edit-value-script name="Max"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="tool_catagories"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/tool_catagories') }}"/>
 
             <x-j-s.tool-type/>
         });

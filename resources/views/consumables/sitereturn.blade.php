@@ -82,11 +82,11 @@
                 <x-slot name="order">[0,'asc']</x-slot>
             </x-data-table.data-table-script>
 
-            <x-data-table.submit-script name-i-d="" action-url="consumable_returns">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/consumable_returns') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="consumable_returns">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/consumable_returns') }}">
                 <x-data-table.edit-value-script name="Return"/>
                 <x-data-table.edit-value-script name="Remark"/>
             </x-data-table.edit-script>

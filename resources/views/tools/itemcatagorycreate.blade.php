@@ -80,17 +80,17 @@
 
             <x-data-table.create-script name-i-d="" title="Tool"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="item_tool_catagories">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/item_tool_catagories') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="item_tool_catagories">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/item_tool_catagories') }}">
                 <x-data-table.edit-value-script name="tool_catagory_id"/>
                 <x-data-table.edit-value-script name="Quantity"/>
                 <x-data-table.edit-value-script name="Remark"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="item_tool_catagories"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/item_tool_catagories') }}"/>
         });
     </script>
 @endsection
