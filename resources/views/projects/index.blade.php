@@ -330,14 +330,14 @@
 
             <x-data-table.create-script name-i-d="" title="Project"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="projects">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/projects') }}">
                 <x-data-table.ajax-reload-script table-id="notconfirmed"/>
                 <x-data-table.ajax-reload-script table-id="preparing"/>
                 <x-data-table.ajax-reload-script table-id="inprogress"/>
                 <x-data-table.ajax-reload-script table-id="finished"/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="projects">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/projects') }}">
                 <x-data-table.edit-value-script name="ProjectName"/>
                 <x-data-table.edit-value-script name="project_type_id"/>
                 <x-data-table.edit-value-script name="StartDate"/>
