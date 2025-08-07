@@ -46,15 +46,15 @@
 
             <x-data-table.create-script name-i-d="" title="Add Type Name"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="project_types">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/project_types') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="project_types">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/project_types') }}">
                 <x-data-table.edit-value-script name="TypeName"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="project_types"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/project_types') }}"/>
         });
     </script>
 @endsection
