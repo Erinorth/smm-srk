@@ -99,7 +99,7 @@
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="onthejobtraining_approves">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/onthejobtraining_approves') }}">
                 <x-data-table.edit-value-script name="Approver"/>
                 <x-data-table.edit-value-script name="ApprovedDate"/>
             </x-data-table.edit-script>
@@ -123,7 +123,7 @@
                 <x-data-table.ajax-reload-script table-id="_training"/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name="_training"  edit-url="trainings">
+            <x-data-table.edit-script edit-name="_training"  edit-url="{{ url('/xxx') }}trainings">
                 <x-data-table.edit-value-script name="employee_id"/>
                 <x-data-table.edit-value-script name="Course"/>
             </x-data-table.edit-script>

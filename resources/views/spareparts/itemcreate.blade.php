@@ -86,7 +86,7 @@
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="item_spareparts">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/item_spareparts') }}">
                 <x-data-table.edit-value-script name="spare_part_id"/>
                 <x-data-table.edit-value-script name="Quantity"/>
             </x-data-table.edit-script>

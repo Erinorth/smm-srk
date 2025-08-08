@@ -72,7 +72,7 @@
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="mail_responsible">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/mail_responsible') }}">
                 <x-data-table.edit-value-script name="project_type_id"/>
                 <x-data-table.edit-value-script name="Responsible"/>
                 <x-data-table.edit-value-script name="MilestoneResponsible"/>

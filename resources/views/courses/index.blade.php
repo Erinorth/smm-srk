@@ -83,7 +83,7 @@
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="courses">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/courses') }}">
                 <x-data-table.edit-value-script name="CourseName"/>
                 <x-data-table.edit-value-script name="Type"/>
                 <x-data-table.edit-value-script name="ForDepartment"/>

@@ -165,7 +165,7 @@
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="facility_project_tool">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/facility_project_tool') }}">
                 <x-data-table.edit-value-script name="ToolName"/>
                 <x-data-table.edit-value-script name="Type"/>
                 <x-data-table.edit-value-script name="Detail"/>
@@ -307,7 +307,7 @@
                 <x-data-table.ajax-reload-script table-id="crane"/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name="crane"  edit-url="facility_project_crane">
+            <x-data-table.edit-script edit-name="crane"  edit-url="{{ url('/xxx') }}facility_project_crane">
                 <x-data-table.edit-value-script name="machine_set_id"/>
                 <x-data-table.edit-value-script name="MaxUseLoad"/>
                 $('#UseDate_crane').val(data.result.UseDate);

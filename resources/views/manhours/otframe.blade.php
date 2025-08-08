@@ -85,7 +85,7 @@
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="otframe">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/otframe') }}">
                 <x-data-table.edit-value-script name="employee_id"/>
                 <x-data-table.edit-value-script name="Year"/>
                 <x-data-table.edit-value-script name="Month"/>

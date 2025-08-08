@@ -117,7 +117,7 @@
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="support_man">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/support_man') }}">
                 <x-data-table.edit-value-script name="employee_id"/>
                 <x-data-table.edit-value-script name="OT"/>
                 <x-data-table.edit-value-script name="StartDate"/>
@@ -136,7 +136,7 @@
                 <x-slot name="order">[1,'asc']</x-slot>
             </x-data-table.data-table-script>
 
-            <x-data-table.edit-script edit-name="_employee"  edit-url="employees">
+            <x-data-table.edit-script edit-name="_employee"  edit-url="{{ url('/xxx') }}employees">
                 <x-data-table.edit-value-script name="department_id"/>
             </x-data-table.edit-script>
 

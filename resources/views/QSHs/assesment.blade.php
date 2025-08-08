@@ -156,7 +156,7 @@
                 <x-data-table.ajax-reload-script table-id="_type_of_risk"/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name="_type_of_risk"  edit-url="QSH_typeofrisks">
+            <x-data-table.edit-script edit-name="_type_of_risk"  edit-url="{{ url('/QSH_typeofrisks') }}">
                 <x-data-table.edit-value-script name="TypeofRisk"/>
                 <x-data-table.edit-value-script name="factor_id"/>
                 <x-data-table.edit-value-script name="Effect"/>

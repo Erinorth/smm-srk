@@ -78,7 +78,7 @@
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="observations">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/observations') }}">
                 <x-data-table.edit-value-script name="Date"/>
                 <x-data-table.edit-value-script name="job_id"/>
                 <x-data-table.edit-value-script name="Observer"/>

@@ -261,27 +261,27 @@
                 <x-data-table.ajax-reload-script table-id="_scope"/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="items">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/items') }}">
                 <x-data-table.edit-value-script name="item_set_id"/>
                 <x-data-table.edit-value-script name="scope_id"/>
                 <x-data-table.edit-value-script name="SpecificName"/>
             </x-data-table.edit-script>
 
-            <x-data-table.edit-script edit-name="_system"  edit-url="systems">
+            <x-data-table.edit-script edit-name="_system"  edit-url="{{ url('/systems') }}">
                 <x-data-table.edit-value-script name="SystemName"/>
             </x-data-table.edit-script>
 
-            <x-data-table.edit-script edit-name="_equipment"  edit-url="equipment">
+            <x-data-table.edit-script edit-name="_equipment"  edit-url="{{ url('/equipment') }}">
                 <x-data-table.edit-value-script name="EquipmentName"/>
             </x-data-table.edit-script>
 
-            <x-data-table.edit-script edit-name="_item_set"  edit-url="item_sets">
+            <x-data-table.edit-script edit-name="_item_set"  edit-url="{{ url('/item_sets') }}">
                 <x-data-table.edit-value-script name="product_id"/>
                 <x-data-table.edit-value-script name="system_id"/>
                 <x-data-table.edit-value-script name="equipment_id"/>
             </x-data-table.edit-script>
 
-            <x-data-table.edit-script edit-name="_scope"  edit-url="scopes">
+            <x-data-table.edit-script edit-name="_scope"  edit-url="{{ url('/xxx') }}scopes">
                 <x-data-table.edit-value-script name="ScopeName"/>
             </x-data-table.edit-script>
 

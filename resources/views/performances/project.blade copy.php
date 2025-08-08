@@ -404,7 +404,7 @@
                 location.reload();
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="performance_projects">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/performance_projects') }}">
                 <x-data-table.edit-value-script name="SafetyHealth"/>
                 <x-data-table.edit-value-script name="Quality"/>
                 <x-data-table.edit-value-script name="Duration"/>

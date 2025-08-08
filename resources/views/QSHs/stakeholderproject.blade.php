@@ -93,7 +93,7 @@
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="QSH_stakeholder_projects">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/xxx') }}QSH_stakeholder_projects">
                 <x-data-table.edit-value-script name="product_id"/>
                 <x-data-table.edit-value-script name="stakeholder_id"/>
             </x-data-table.edit-script>

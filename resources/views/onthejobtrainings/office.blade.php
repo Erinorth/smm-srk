@@ -282,7 +282,7 @@
                 })
             });
 
-            <x-data-table.edit-script edit-name="_jobposition"  edit-url="jobpositions">
+            <x-data-table.edit-script edit-name="_jobposition"  edit-url="{{ url('/jobpositions') }}">
                 <x-data-table.edit-value-script name="JobPositionName"/>
                 <x-data-table.edit-value-script name="TypeofJob"/>
                 <x-data-table.edit-value-script name="craft_id"/>

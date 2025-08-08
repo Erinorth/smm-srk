@@ -165,14 +165,14 @@
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="WFH_WFA_jobs">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/WFH_WFA_jobs') }}">
                 <x-data-table.edit-value-script name="routine_job_id"/>
                 <x-data-table.edit-value-script name="Detail"/>
                 <x-data-table.edit-value-script name="TargetPoint"/>
                 <x-data-table.edit-value-script name="Assignor"/>
             </x-data-table.edit-script>
 
-            <x-data-table.edit-script edit-name="_routine"  edit-url="routines">
+            <x-data-table.edit-script edit-name="_routine"  edit-url="{{ url('/routines') }}">
                 <x-data-table.edit-value-script name="RoutineJobName"/>
                 <x-data-table.edit-value-script name="KPI"/>
                 <x-data-table.edit-value-script name="Point"/>

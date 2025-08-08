@@ -127,7 +127,7 @@
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="maintenance_reports">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/maintenance_reports') }}">
                 <x-data-table.edit-value-script name="Condition"/>
                 <x-data-table.edit-value-script name="Countermeasure"/>
                 <x-data-table.edit-value-script name="Remark"/>

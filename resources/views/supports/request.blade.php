@@ -99,7 +99,7 @@
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="support_request">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/support_request') }}">
                 <x-data-table.edit-value-script name="AtSite"/>
                 <x-data-table.edit-value-script name="department_id"/>
                 <x-data-table.edit-value-script name="Amount"/>

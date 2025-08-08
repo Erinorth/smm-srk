@@ -192,7 +192,7 @@
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="jobs">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/jobs') }}">
                 <x-data-table.edit-value-script name="p_m_order_id"/>
                 <x-data-table.edit-value-script name="Remark"/>
             </x-data-table.edit-script>

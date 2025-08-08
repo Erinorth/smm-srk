@@ -251,7 +251,7 @@
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="hoist">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/hoist') }}">
                 $('#hoist_list_id').prop('disabled', true);
                 <x-data-table.edit-value-script name="TestDate"/>
                 <x-data-table.edit-value-script name="TopHook"/>
