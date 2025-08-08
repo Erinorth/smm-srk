@@ -247,7 +247,7 @@
                 $('#formModal').modal('show');
             });
 
-            <x-data-table.submit-script name-i-d="" action-url="hoist">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/hoist') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -272,7 +272,7 @@
                 <x-data-table.edit-value-script name="Note"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="hoist"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/hoist') }}"/>
 
             <x-j-s.upload-file-project name="hoist"/>
         });

@@ -184,7 +184,7 @@
 
             <x-data-table.create-script name-i-d="_machine_set" title="Add New Machine Set"/>
 
-            <x-data-table.submit-script name-i-d="_location" action-url="locations">
+            <x-data-table.submit-script name-i-d="_location" action-url="{{ url('/locations') }}">
                 <x-data-table.ajax-reload-script table-id="_location"/>
             </x-data-table.submit-script>
 

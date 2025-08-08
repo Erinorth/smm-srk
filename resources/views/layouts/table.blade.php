@@ -361,7 +361,7 @@
         var id = $(this).attr('id');
         $('#form_result').html('');
         $.ajax({
-            url :"/pmorders/"+id+"/edit", //
+            url :"{{ url('/pmorders/') }}"+id+"/edit", //
             dataType:"json",
             success:function(data)
             {

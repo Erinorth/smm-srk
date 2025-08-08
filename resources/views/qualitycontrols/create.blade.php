@@ -85,7 +85,7 @@
 
             <x-data-table.create-script name-i-d="" title="Quality Control"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="qualitycontrols">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/qualitycontrols') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -96,7 +96,7 @@
                 <x-data-table.edit-value-script name="RecordedDocument"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="qualitycontrols"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/qualitycontrols') }}"/>
         });
     </script>
 @endsection

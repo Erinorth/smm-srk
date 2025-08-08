@@ -110,7 +110,7 @@
 
             <x-data-table.create-script name-i-d="" title="Add New Lifting Measurement"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="liftings">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/liftings') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -127,7 +127,7 @@
                 <x-data-table.edit-value-script name="Supervisor"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="liftings"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/liftings') }}"/>
 
             <x-j-s.upload-file-project name="lifting"/>
         });

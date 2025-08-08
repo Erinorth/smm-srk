@@ -79,7 +79,7 @@
 
             <x-data-table.create-script name-i-d="" title=" Add Hazard Controls"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="hazard_controls">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/hazard_controls') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -90,7 +90,7 @@
                 $('#Result').summernote("code", data.result.HazardControl);
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="hazard_controls"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/hazard_controls') }}"/>
         });
     </script>
 @endsection

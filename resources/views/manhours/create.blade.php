@@ -317,15 +317,15 @@
 
             <x-data-table.create-script name-i-d="_jobposition" title="Add Job Position"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="manhours">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/manhours') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.submit-script name-i-d="_jobposition" action-url="jobpositions">
+            <x-data-table.submit-script name-i-d="_jobposition" action-url="{{ url('/jobpositions') }}">
                 <x-data-table.ajax-reload-script table-id="_jobposition"/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="manhours">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/manhours') }}">
                 <x-data-table.edit-value-script name="employee_id"/>
                 <x-data-table.edit-value-script name="WorkingDate"/>
                 <x-data-table.edit-value-script name="job_id"/>
@@ -411,9 +411,9 @@
                 });
             });
 
-            <x-data-table.delete-script delete-name="" url="manhours"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/manhours') }}"/>
 
-            <x-data-table.delete-script delete-name="_jobposition" url="jobpositions"/>
+            <x-data-table.delete-script delete-name="_jobposition" url="{{ url('/jobpositions') }}"/>
 
             $('input[name="WorkingDate"]').focusout(function(){
                 if($(this).val() != '')

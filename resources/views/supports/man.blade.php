@@ -113,7 +113,7 @@
 
             <x-data-table.create-script name-i-d="" title="Support Men"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="support_man">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/support_man') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -124,7 +124,7 @@
                 <x-data-table.edit-value-script name="Remark"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="support_man"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/support_man') }}"/>
 
             <x-data-table.data-table-script table-name="_employee" ajax-url="{{ url('/support_man_employee') }}">
                 <x-data-table.column-script column-name="WorkID"/>
@@ -136,11 +136,11 @@
                 <x-slot name="order">[1,'asc']</x-slot>
             </x-data-table.data-table-script>
 
-            <x-data-table.edit-script edit-name="_employee"  edit-url="{{ url('/xxx') }}employees">
+            <x-data-table.edit-script edit-name="_employee"  edit-url="{{ url('/employees') }}">
                 <x-data-table.edit-value-script name="department_id"/>
             </x-data-table.edit-script>
 
-            <x-data-table.submit-script name-i-d="_employee" action-url="support_man_employee">
+            <x-data-table.submit-script name-i-d="_employee" action-url="{{ url('/support_man_employee') }}">
                 <x-data-table.ajax-reload-script table-id="_employee"/>
             </x-data-table.submit-script>
         });

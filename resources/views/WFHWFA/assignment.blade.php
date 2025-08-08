@@ -115,7 +115,7 @@
 
             <x-data-table.create-script name-i-d="" title="Add Assingment"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="WFH_WFA_assignments">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/WFH_WFA_assignments') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -127,7 +127,7 @@
                 <x-data-table.edit-value-script name="KPI"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="WFH_WFA_assignments"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/WFH_WFA_assignments') }}"/>
         });
     </script>
 @endsection

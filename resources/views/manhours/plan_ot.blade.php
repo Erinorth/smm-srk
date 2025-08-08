@@ -223,7 +223,7 @@
                 var Month = $(this).attr('Month');
                 $('#form_result_otframe').html('');
                 $.ajax({
-                    url :"/otframe/"+id+"/edit",
+                    url :"{{ url('/otframe/') }}"+id+"/edit",
                     dataType:"json",
                     success:function(data)
                     {

@@ -64,7 +64,7 @@
 
             <x-data-table.create-script name-i-d="" title="Spare Part"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="spareparts">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/spareparts') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -74,7 +74,7 @@
                 <x-data-table.edit-value-script name="Unit"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="spareparts"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/spareparts') }}"/>
         });
     </script>
 @endsection

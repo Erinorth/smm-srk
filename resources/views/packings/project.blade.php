@@ -141,7 +141,7 @@
                 var id = $(this).attr('id');
                 $('#form_result').html('');
                 $.ajax({
-                    url :"/packing_consumables/"+id+"/edit",
+                    url :"{{ url('/packing_consumables/') }}"+id+"/edit",
                     dataType:"json",
                     success:function(data)
                     {
@@ -159,7 +159,7 @@
                 var id = $(this).attr('id');
                 $('#form_result').html('');
                 $.ajax({
-                    url :"/packing_tools/"+id+"/edit",
+                    url :"{{ url('/packing_tools/') }}"+id+"/edit",
                     dataType:"json",
                     success:function(data)
                     {

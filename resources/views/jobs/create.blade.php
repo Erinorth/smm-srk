@@ -173,7 +173,7 @@
                         var id = $(this).attr('id');
                         $('#form_result').html('');
                         $.ajax({
-                            url :"/job_items/"+id+"/create", //
+                            url :"{{ url('/job_items/') }}"+id+"/create", //
                             dataType:"json",
                             success:function(data)
                             {
@@ -188,7 +188,7 @@
                 }
             });
 
-            <x-data-table.submit-script name-i-d="" action-url="jobs">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/jobs') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -197,7 +197,7 @@
                 <x-data-table.edit-value-script name="Remark"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="jobs"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/jobs') }}"/>
         });
     </script>
 @endsection

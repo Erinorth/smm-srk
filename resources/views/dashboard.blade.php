@@ -145,7 +145,7 @@
         <div class="row">
             <div class="col-6">
                 <x-adminlte-small-box title="Safety" text="กฟนม-ธ. 0 / อบค. 0" icon="fa-solid fa-car-crash"
-                    theme="red" url="/dashboard_safety" url-text="View details"/>
+                    theme="red" url="{{ url('/dashboard_safety') }}" url-text="View details"/>
             </div>
             {{-- <div class="col-6">
                 <x-adminlte-small-box title="Quality" text="กฟนม-ธ. 0 / อบค. 0" icon="fa-solid fa-car-crash"
@@ -161,7 +161,7 @@
             </div> --}}
             <div class="col-6">
                 <x-adminlte-small-box title="Overtime" text="กฟนม-ธ. 0 / อบค. 0" icon="fa-solid fa-clock"
-                    theme="red" url="/dashboard_overtime" url-text="View details"/>
+                    theme="red" url="{{ url('/dashboard_overtime') }}" url-text="View details"/>
             </div>
             {{-- <div class="col-6">
                 <x-adminlte-small-box title="Utilization Factor" text="กฟนม-ธ. 0 / อบค. 0" icon="fa-solid fa-car-crash"
@@ -169,11 +169,11 @@
             </div> --}}
             <div class="col-6">
                 <x-adminlte-small-box title="Expensive Tool" :text="$text_expensive_tool" icon="fa-solid fa-tools"
-                    :theme="$color_expensive" url="/dashboard_expensive_tool" url-text="View details"/>
+                    :theme="$color_expensive" url="{{ url('/dashboard_expensive_tool') }}" url-text="View details"/>
             </div>
             <div class="col-6">
                 <x-adminlte-small-box title="PM Order" :text="$text_pm" icon="fas fa-sort-numeric-down"
-                    :theme="$color_pm" url="/pmorders/1/index" url-text="View details"/>
+                    :theme="$color_pm" url="{{ url('/pmorders/1/index') }}" url-text="View details"/>
             </div>
         </div>
         {{-- @role('admin|head_operation|head_engineering')

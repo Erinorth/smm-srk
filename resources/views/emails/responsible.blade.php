@@ -68,7 +68,7 @@
 
             <x-data-table.create-script name-i-d="" title="Add New Responsible"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="mail_responsible">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/mail_responsible') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -78,7 +78,7 @@
                 <x-data-table.edit-value-script name="MilestoneResponsible"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="mail_responsible"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/mail_responsible') }}"/>
         });
     </script>
 @endsection

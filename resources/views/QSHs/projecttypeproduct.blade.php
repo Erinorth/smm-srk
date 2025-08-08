@@ -58,7 +58,7 @@
 
             <x-data-table.create-script name-i-d="" title="Add New Project Type-Product"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="QSH_project_type_products">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/QSH_project_type_products') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -67,7 +67,7 @@
                 <x-data-table.edit-value-script name="product_id"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="QSH_project_type_products"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/QSH_project_type_products') }}"/>
         });
     </script>
 @endsection

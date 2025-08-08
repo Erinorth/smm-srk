@@ -345,7 +345,7 @@
 
             <x-data-table.create-script name-i-d="" title="Add Performance Evaluation"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="performance_projects">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/performance_projects') }}">
                 location.reload();
             </x-data-table.submit-script>
 
@@ -361,7 +361,7 @@
                 <x-data-table.edit-value-script name="KPI"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="performance_projects"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/performance_projects') }}"/>
         });
     </script>
 @endsection

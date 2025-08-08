@@ -200,7 +200,7 @@
 
             <x-data-table.create-script name-i-d="_jobposition" title="Add Job Position"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="onthejobtraining_projects">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/onthejobtraining_projects') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -236,7 +236,7 @@
                 });
             });
 
-            <x-data-table.submit-script name-i-d="_jobposition" action-url="jobpositions">
+            <x-data-table.submit-script name-i-d="_jobposition" action-url="{{ url('/jobpositions') }}">
                 <x-data-table.ajax-reload-script table-id="_jobposition"/>
             </x-data-table.submit-script>
 
@@ -244,7 +244,7 @@
                 var id = $(this).attr('id');
                 $('#form_result').html('');
                 $.ajax({
-                    url :"/onthejobtraining_projects/"+id+"/edit",
+                    url :"{{ url('/onthejobtraining_projects/') }}"+id+"/edit",
                     dataType:"json",
                     success:function(data)
                     {
@@ -294,7 +294,7 @@
                 var evaluate_id = $(this).attr('id');
                 $('#form_result2').html('');
                 $.ajax({
-                    url :"/onthejobtraining_projects/"+evaluate_id+"/edit",
+                    url :"{{ url('/onthejobtraining_projects/') }}"+evaluate_id+"/edit",
                     dataType:"json",
                     success:function(data)
                     {
@@ -364,9 +364,9 @@
                 $('#job_position_id').val('');
             });
 
-            <x-data-table.delete-script delete-name="" url="onthejobtraining_projects"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/onthejobtraining_projects') }}"/>
 
-            <x-data-table.delete-script delete-name="_jobposition" url="jobpositions"/>
+            <x-data-table.delete-script delete-name="_jobposition" url="{{ url('/jobpositions') }}"/>
         });
     </script>
 @endsection

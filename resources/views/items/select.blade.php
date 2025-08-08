@@ -241,23 +241,23 @@
 
             <x-data-table.create-script name-i-d="_scope" title="Add New Scope"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="items">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/items') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.submit-script name-i-d="_system" action-url="systems">
+            <x-data-table.submit-script name-i-d="_system" action-url="{{ url('/systems') }}">
                 <x-data-table.ajax-reload-script table-id="_system"/>
             </x-data-table.submit-script>
 
-            <x-data-table.submit-script name-i-d="_equipment" action-url="equipment">
+            <x-data-table.submit-script name-i-d="_equipment" action-url="{{ url('/equipment') }}">
                 <x-data-table.ajax-reload-script table-id="_equipment"/>
             </x-data-table.submit-script>
 
-            <x-data-table.submit-script name-i-d="_item_set" action-url="item_sets">
+            <x-data-table.submit-script name-i-d="_item_set" action-url="{{ url('/item_sets') }}">
                 <x-data-table.ajax-reload-script table-id="_item_set"/>
             </x-data-table.submit-script>
 
-            <x-data-table.submit-script name-i-d="_scope" action-url="scopes">
+            <x-data-table.submit-script name-i-d="_scope" action-url="{{ url('/scopes') }}">
                 <x-data-table.ajax-reload-script table-id="_scope"/>
             </x-data-table.submit-script>
 
@@ -285,15 +285,15 @@
                 <x-data-table.edit-value-script name="ScopeName"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="items"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/items') }}"/>
 
-            <x-data-table.delete-script delete-name="_system" url="systems"/>
+            <x-data-table.delete-script delete-name="_system" url="{{ url('/systems') }}"/>
 
-            <x-data-table.delete-script delete-name="_equipment" url="equipment"/>
+            <x-data-table.delete-script delete-name="_equipment" url="{{ url('/equipment') }}"/>
 
-            <x-data-table.delete-script delete-name="_item_set" url="item_sets"/>
+            <x-data-table.delete-script delete-name="_item_set" url="{{ url('/item_sets') }}"/>
 
-            <x-data-table.delete-script delete-name="_scope" url="scopes"/>
+            <x-data-table.delete-script delete-name="_scope" url="{{ url('/scopes') }}"/>
         });
     </script>
 @endsection

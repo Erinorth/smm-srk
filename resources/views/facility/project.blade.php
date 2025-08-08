@@ -173,7 +173,7 @@
                 <x-data-table.edit-value-script name="Remark"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="facility_project_tool"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/facility_project_tool') }}"/>
 
             $(document).on('click','.attachment', function(){
                 var attachment_id = $(this).attr('id');
@@ -303,11 +303,11 @@
 
             <x-data-table.create-script name-i-d="crane" title="Request Cranes"/>
 
-            <x-data-table.submit-script name-i-d="crane" action-url="facility_project_crane">
+            <x-data-table.submit-script name-i-d="crane" action-url="{{ url('/xxfacility_project_cranex') }}">
                 <x-data-table.ajax-reload-script table-id="crane"/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name="crane"  edit-url="{{ url('/xxx') }}facility_project_crane">
+            <x-data-table.edit-script edit-name="crane"  edit-url="{{ url('/facility_project_crane') }}">
                 <x-data-table.edit-value-script name="machine_set_id"/>
                 <x-data-table.edit-value-script name="MaxUseLoad"/>
                 $('#UseDate_crane').val(data.result.UseDate);
@@ -316,7 +316,7 @@
                 $('#Remark_crane').trigger('change');
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="crane" url="facility_project_crane"/>
+            <x-data-table.delete-script delete-name="crane" url="{{ url('/facility_project_crane') }}"/>
         });
     </script>
 @endsection

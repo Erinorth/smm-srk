@@ -95,7 +95,7 @@
 
             <x-data-table.create-script name-i-d="" title="Support Request"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="support_request">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/support_request') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -107,7 +107,7 @@
                 <x-data-table.edit-value-script name="Remark"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="support_request"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/support_request') }}"/>
         });
     </script>
 @endsection

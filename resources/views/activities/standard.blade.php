@@ -59,7 +59,7 @@
 
             <x-data-table.create-script name-i-d="" title="Add Standard Activity"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="activity_standards">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/activity_standards') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -69,7 +69,7 @@
                 <x-data-table.edit-value-script name="ActivityName"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="activity_standards"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/activity_standards') }}"/>
         });
     </script>
 @endsection

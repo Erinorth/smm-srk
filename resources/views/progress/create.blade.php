@@ -139,7 +139,7 @@
 
             <x-data-table.create-script name-i-d="" title="Add Progress"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="progress">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/progress') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -151,7 +151,7 @@
                 <x-data-table.edit-value-script name="Remark"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="progress"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/progress') }}"/>
 
             $('#create_record2').click(function(){
                 $('#create_form2')[0].reset();
@@ -165,7 +165,7 @@
 
                 $.ajax({
                     type:'POST',
-                    url: "/progress_import_excel/"+projectid,
+                    url: "{{ url('/progress_import_excel') }}"+projectid,
                     data: formData,
                     cache:false,
                     contentType: false,

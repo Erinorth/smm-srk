@@ -118,7 +118,7 @@
 
             <x-data-table.create-script name-i-d="" title="Mobilization Plan"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="mobilizationplans">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/mobilizationplans') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -129,7 +129,7 @@
                 <x-data-table.edit-value-script name="Remark"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="mobilizationplans"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/mobilizationplans') }}"/>
         });
     </script>
 @endsection

@@ -150,7 +150,7 @@
                 $('#formModal').modal('show');
             });
 
-            <x-data-table.submit-script name-i-d="" action-url="workprocedures2">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/workprocedures2') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -158,7 +158,7 @@
                 var id = $(this).attr('id');
                 $('#form_result').html('');
                 $.ajax({
-                    url :"/workprocedures2/"+id+"/edit", //
+                    url :"{{ url('/workprocedures2/') }}"+id+"/edit", //
                     dataType:"json",
                     success:function(data)
                     {
@@ -190,7 +190,7 @@
                 })
             });
 
-            <x-data-table.delete-script delete-name="" url="workprocedures2"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/workprocedures2') }}"/>
         });
     </script>
 @endsection

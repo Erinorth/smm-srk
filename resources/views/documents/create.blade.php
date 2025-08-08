@@ -169,7 +169,7 @@
                 var id = $(this).attr('id');
                 $('#form_result').html('');
                 $.ajax({
-                    url :"/documents/"+id+"/edit",
+                    url :"{{ url('/documents/') }}"+id+"/edit",
                     dataType:"json",
                     success:function(data)
                     {
@@ -192,7 +192,7 @@
             $(document).on('click', '.edit_attachment', function(){
                 var id = $(this).attr('id');
                 $.ajax({
-                    url :"/documents/"+id+"/edit",
+                    url :"{{ url('/documents/') }}"+id+"/edit",
                     dataType:"json",
                     success:function(data)
                     {
@@ -212,7 +212,7 @@
                 })
             });
 
-            <x-data-table.delete-script delete-name="" url="documents"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/documents') }}"/>
         });
     </script>
 @endsection

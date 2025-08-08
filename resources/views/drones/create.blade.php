@@ -96,7 +96,7 @@
 
             <x-data-table.create-script name-i-d="" title="Add New Inspected by Drone"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="drones">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/drones') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -111,7 +111,7 @@
                 <x-data-table.edit-value-script name="Supervisor"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="drones"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/drones') }}"/>
         });
     </script>
 @endsection

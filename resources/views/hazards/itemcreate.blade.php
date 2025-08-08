@@ -79,7 +79,7 @@
 
             <x-data-table.create-script name-i-d="" title="Hazard"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="item_hazards">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/item_hazards') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -88,7 +88,7 @@
                 <x-data-table.edit-value-script name="hazard_id"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="item_hazards"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/item_hazards') }}"/>
         });
     </script>
 @endsection

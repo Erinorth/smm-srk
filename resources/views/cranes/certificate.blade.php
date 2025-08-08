@@ -164,7 +164,7 @@
                 var id = $(this).attr('id');
                 $('#form_result').html('');
                 $.ajax({
-                    url :"/crane_certificate/"+id+"/edit",
+                    url :"{{ url('/crane_certificate/') }}"+id+"/edit",
                     dataType:"json",
                     success:function(data)
                     {
@@ -186,7 +186,7 @@
             $(document).on('click', '.edit_attachment', function(){
                 var id = $(this).attr('id');
                 $.ajax({
-                    url :"/crane_certificate/"+id+"/edit",
+                    url :"{{ url('/crane_certificate/') }}"+id+"/edit",
                     dataType:"json",
                     success:function(data)
                     {
@@ -204,7 +204,7 @@
                 })
             });
 
-            <x-data-table.delete-script delete-name="" url="crane_certificate"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/crane_certificate') }}"/>
         });
     </script>
 @endsection

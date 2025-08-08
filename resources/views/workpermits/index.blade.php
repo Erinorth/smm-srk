@@ -93,7 +93,7 @@
 
             <x-data-table.create-script name-i-d="" title="Work Permit"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="work_permits">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/work_permits') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -113,7 +113,7 @@
                 <x-data-table.edit-value-script name="Requester"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="work_permits"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/work_permits') }}"/>
 
             <x-j-s.upload-file-project name="work_permit"/>
         });

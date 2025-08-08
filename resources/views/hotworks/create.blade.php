@@ -99,7 +99,7 @@
 
             <x-data-table.create-script name-i-d="" title="Add New Hot Work Measurement"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="hotworks">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/hotworks') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -114,7 +114,7 @@
                 <x-data-table.edit-value-script name="Supervisor"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="hotworks"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/hotworks') }}"/>
 
             <x-j-s.upload-file-project name="hot_work"/>
         });

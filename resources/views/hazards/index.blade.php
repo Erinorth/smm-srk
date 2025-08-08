@@ -11,7 +11,7 @@
         collapse-button="minus" table-id="">
         <x-slot name="tool">
             <x-button.create-record name-i-d=""/>
-            <x-button.printb url="hazard"/>
+            <x-button.printb url="{{ url('/hazard') }}"/>
         </x-slot>
         <th>ID</th>
         <th>Hazard Name</th>
@@ -171,7 +171,7 @@
 
             <x-data-table.create-script name-i-d="" title="Hazard"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="hazards">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/hazards') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -189,7 +189,7 @@
                 <x-data-table.edit-value-script name="Opportunity"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="hazards"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/hazards') }}"/>
         });
     </script>
 @endsection

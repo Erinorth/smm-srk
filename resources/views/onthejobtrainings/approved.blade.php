@@ -95,7 +95,7 @@
 
             <x-data-table.create-script name-i-d="" title="Project"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="onthejobtraining_approves">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/onthejobtraining_approves') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -119,16 +119,16 @@
 
             <x-data-table.create-script name-i-d="_training" title="Training Record"/>
 
-            <x-data-table.submit-script name-i-d="_training" action-url="trainings">
+            <x-data-table.submit-script name-i-d="_training" action-url="{{ url('/trainings') }}">
                 <x-data-table.ajax-reload-script table-id="_training"/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name="_training"  edit-url="{{ url('/xxx') }}trainings">
+            <x-data-table.edit-script edit-name="_training"  edit-url="{{ url('/trainings') }}">
                 <x-data-table.edit-value-script name="employee_id"/>
                 <x-data-table.edit-value-script name="Course"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="_training" url="trainings"/>
+            <x-data-table.delete-script delete-name="_training" url="{{ url('/trainings') }}"/>
         });
     </script>
 @endsection

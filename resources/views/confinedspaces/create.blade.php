@@ -110,7 +110,7 @@
 
             <x-data-table.create-script name-i-d="" title="Add New Confined Space Measurement"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="confinedspaces">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/confinedspaces') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -127,7 +127,7 @@
                 <x-data-table.edit-value-script name="Supervisor"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="confinedspaces"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/confinedspaces') }}"/>
 
             <x-j-s.upload-file-project name="confinedspace"/>
         });

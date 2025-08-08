@@ -101,7 +101,7 @@
                 }
             });
 
-            <x-data-table.submit-script name-i-d="" action-url="law_assesments">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/law_assesments') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 

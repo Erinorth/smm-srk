@@ -102,7 +102,7 @@
 
             <x-data-table.create-script name-i-d="" title="Add New Work At Hight Measurement"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="workathight_winds">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/workathight_winds') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -117,7 +117,7 @@
                 <x-data-table.edit-value-script name="Supervisor"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="workathight_winds"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/workathight_winds') }}"/>
 
             <x-j-s.upload-file-project name="work_at_hight_wind"/>
         });

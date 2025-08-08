@@ -74,7 +74,7 @@
 
             <x-data-table.create-script name-i-d="" title="observations"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="observations">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/observations') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -84,7 +84,7 @@
                 <x-data-table.edit-value-script name="Observer"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="observations"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/observations') }}"/>
 
             <x-j-s.upload-file-project name="observation"/>
         });

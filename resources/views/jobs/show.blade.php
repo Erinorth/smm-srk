@@ -158,17 +158,17 @@
 
             <x-data-table.create-script name-i-d="" title="Add Date"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="job_dates">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/job_dates') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name=""  edit-url="job_dates">
+            <x-data-table.edit-script edit-name=""  edit-url="{{ url('/job_dates') }}">
                 <x-data-table.edit-value-script name="Date"/>
                 <x-data-table.edit-value-script name="Plan"/>
                 <x-data-table.edit-value-script name="Actual"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="job_dates"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/job_dates') }}"/>
 
             var p = "<?php echo $p ?>";
             var m = "<?php echo $m ?>";

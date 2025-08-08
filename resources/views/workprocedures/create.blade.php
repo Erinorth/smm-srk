@@ -133,7 +133,7 @@
 
             <x-data-table.create-script name-i-d="" title="Procedure"/>
 
-            <x-data-table.submit-script name-i-d="" action-url="workprocedures">
+            <x-data-table.submit-script name-i-d="" action-url="{{ url('/workprocedures') }}">
                 <x-data-table.ajax-reload-script table-id=""/>
             </x-data-table.submit-script>
 
@@ -141,7 +141,7 @@
                 var id = $(this).attr('id');
                 $('#form_result').html('');
                 $.ajax({
-                    url :"/workprocedures/"+id+"/edit", //
+                    url :"{{ url('/workprocedures/') }}"+id+"/edit", //
                     dataType:"json",
                     success:function(data)
                     {
@@ -173,7 +173,7 @@
                 })
             });
 
-            <x-data-table.delete-script delete-name="" url="workprocedures"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/workprocedures') }}"/>
 
             $('.dynamicactivity').change(function(){
                 if($(this).val() != '')

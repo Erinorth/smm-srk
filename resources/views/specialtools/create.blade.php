@@ -175,7 +175,7 @@
                 var id = $(this).attr('id');
                 $('#form_result').html('');
                 $.ajax({
-                    url :"/specialtools/"+id+"/edit",
+                    url :"{{ url('/specialtools/') }}"+id+"/edit",
                     dataType:"json",
                     success:function(data)
                     {
@@ -200,7 +200,7 @@
             $(document).on('click', '.edit_attachment', function(){
                 var id = $(this).attr('id');
                 $.ajax({
-                    url :"/specialtools/"+id+"/edit",
+                    url :"{{ url('/specialtools/') }}"+id+"/edit",
                     dataType:"json",
                     success:function(data)
                     {
@@ -222,7 +222,7 @@
                 })
             });
 
-            <x-data-table.delete-script delete-name="" url="specialtools"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/specialtools') }}"/>
         });
     </script>
 @endsection

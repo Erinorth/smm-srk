@@ -152,7 +152,7 @@
 
             <x-data-table.create-script name-i-d="_type_of_risk" title="Add New Risk Assessment"/>
 
-            <x-data-table.submit-script name-i-d="_type_of_risk" action-url="QSH_typeofrisks">
+            <x-data-table.submit-script name-i-d="_type_of_risk" action-url="{{ url('/QSH_typeofrisks') }}">
                 <x-data-table.ajax-reload-script table-id="_type_of_risk"/>
             </x-data-table.submit-script>
 
@@ -165,7 +165,7 @@
                 <x-data-table.edit-value-script name="Followup"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="_type_of_risk" url="QSH_typeofrisks"/>
+            <x-data-table.delete-script delete-name="_type_of_risk" url="{{ url('/QSH_typeofrisks') }}"/>
         });
     </script>
 @endsection

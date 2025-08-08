@@ -178,7 +178,7 @@
                 <x-data-table.edit-value-script name="DigitalRemark"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="" url="performance_employees"/>
+            <x-data-table.delete-script delete-name="" url="{{ url('/performance_employees') }}"/>
         });
     </script>
 @endsection
