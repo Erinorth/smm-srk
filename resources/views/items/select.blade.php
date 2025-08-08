@@ -193,7 +193,7 @@
                 <x-slot name="order">[0,'desc']</x-slot>
             </x-data-table.data-table-script>
 
-            <x-data-table.data-table-script table-name="_system" ajax-url="/systems">
+            <x-data-table.data-table-script table-name="_system" ajax-url="{{ url('/systems') }}">
                 <x-data-table.column-script column-name="id"/>
                 <x-data-table.column-script column-name="SystemName"/>
                 <x-data-table.column-script column-name="action">
@@ -202,7 +202,7 @@
                 <x-slot name="order">[0,'desc']</x-slot>
             </x-data-table.data-table-script>
 
-            <x-data-table.data-table-script table-name="_equipment" ajax-url="/equipment">
+            <x-data-table.data-table-script table-name="_equipment" ajax-url="{{ url('/equipment') }}">
                 <x-data-table.column-script column-name="id"/>
                 <x-data-table.column-script column-name="EquipmentName"/>
                 <x-data-table.column-script column-name="action">
@@ -211,7 +211,7 @@
                 <x-slot name="order">[0,'desc']</x-slot>
             </x-data-table.data-table-script>
 
-            <x-data-table.data-table-script table-name="_item_set" ajax-url="/item_sets">
+            <x-data-table.data-table-script table-name="_item_set" ajax-url="{{ url('/item_sets') }}">
                 <x-data-table.column-script column-name="id"/>
                 <x-data-table.column-script column-name="ProductName"/>
                 <x-data-table.column-script column-name="SystemName"/>
@@ -222,7 +222,7 @@
                 <x-slot name="order">[0,'desc']</x-slot>
             </x-data-table.data-table-script>
 
-            <x-data-table.data-table-script table-name="_scope" ajax-url="/scopes">
+            <x-data-table.data-table-script table-name="_scope" ajax-url="{{ url('/scopes') }}">
                 <x-data-table.column-script column-name="id"/>
                 <x-data-table.column-script column-name="ScopeName"/>
                 <x-data-table.column-script column-name="action">

@@ -300,7 +300,7 @@
                 <x-slot name="order">[0,'desc'],[1,'asc'],[2,'asc']</x-slot>
             </x-data-table.data-table-script>
 
-            <x-data-table.data-table-script table-name="_jobposition" ajax-url="/jobpositions">
+            <x-data-table.data-table-script table-name="_jobposition" ajax-url="{{ url('/jobpositions') }}">
                 <x-data-table.column-script column-name="id"/>
                 <x-data-table.column-script column-name="JobPositionName"/>
                 <x-data-table.column-script column-name="TypeofJob">

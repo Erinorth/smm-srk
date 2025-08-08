@@ -37,7 +37,7 @@
     <script>
         $(document).ready(function(){
 
-            <x-data-table.data-table-script table-name="_expensivetool" ajax-url="/dashboard_tooltimeconfirm">
+            <x-data-table.data-table-script table-name="_expensivetool" ajax-url="{{ url('/dashboard_tooltimeconfirm') }}">
                 <x-data-table.column-script column-name="CatagoryName"/>
                 <x-data-table.column-script column-name="RangeCapacity"/>
                 <x-data-table.column-script column-name="Brand"/>

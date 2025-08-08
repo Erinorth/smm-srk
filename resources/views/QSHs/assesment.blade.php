@@ -137,7 +137,7 @@
                 }
             });
 
-            <x-data-table.data-table-script table-name="_type_of_risk" ajax-url="/QSH_typeofrisks">
+            <x-data-table.data-table-script table-name="_type_of_risk" ajax-url="{{ url('/QSH_typeofrisks') }}">
                 <x-data-table.column-script column-name="Factor"/>
                 <x-data-table.column-script column-name="TypeofRisk"/>
                 <x-data-table.column-script column-name="Effect"/>

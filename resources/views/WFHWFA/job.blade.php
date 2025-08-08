@@ -142,7 +142,7 @@
                 <x-slot name="order"></x-slot>
             </x-data-table.data-table-script>
 
-            <x-data-table.data-table-script table-name="_routine" ajax-url="/routines">
+            <x-data-table.data-table-script table-name="_routine" ajax-url="{{ url('/routines') }}">
                 <x-data-table.column-script column-name="id"/>
                 <x-data-table.column-script column-name="RoutineJobName"/>
                 <x-data-table.column-script column-name="KPI"/>

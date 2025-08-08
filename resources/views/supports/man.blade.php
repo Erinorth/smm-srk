@@ -126,7 +126,7 @@
 
             <x-data-table.delete-script delete-name="" url="support_man"/>
 
-            <x-data-table.data-table-script table-name="_employee" ajax-url="/support_man_employee">
+            <x-data-table.data-table-script table-name="_employee" ajax-url="{{ url('/support_man_employee') }}">
                 <x-data-table.column-script column-name="WorkID"/>
                 <x-data-table.column-script column-name="ThaiName"/>
                 <x-data-table.column-script column-name="DepartmentName"/>

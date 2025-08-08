@@ -104,7 +104,7 @@
                 <x-data-table.edit-value-script name="ApprovedDate"/>
             </x-data-table.edit-script>
 
-            <x-data-table.data-table-script table-name="_training" ajax-url="/trainings">
+            <x-data-table.data-table-script table-name="_training" ajax-url="{{ url('/trainings') }}">
                 <x-data-table.column-script column-name="id"/>
                 <x-data-table.column-script column-name="ThaiName"/>
                 <x-data-table.column-script column-name="Course"/>

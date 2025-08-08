@@ -146,7 +146,7 @@
     <script>
         $(document).ready(function(){
 
-            <x-j-s.data-table2 table-name="" ajax-url="/facility_project_tool" ajax-url2="{{ $project->id }}">
+            <x-j-s.data-table2 table-name="" ajax-url="{{ url('/facility_project_tool') }}" ajax-url2="{{ $project->id }}">
                 <x-data-table.column-script column-name="ToolName"/>
                 <x-data-table.column-script column-name="Type"/>
                 <x-data-table.column-script column-name="Detail"/>
@@ -288,7 +288,7 @@
                 })
             });
 
-            <x-j-s.data-table2 table-name="crane" ajax-url="/facility_project_crane" ajax-url2="{{ $project->id }}">
+            <x-j-s.data-table2 table-name="crane" ajax-url="{{ url('/xxx') }}/facility_project_crane" ajax-url2="{{ $project->id }}">
                 <x-data-table.column-script column-name="MachineName"/>
                 <x-data-table.column-script column-name="MachineDetail"/>
                 <x-data-table.column-script column-name="MaxUseLoad"/>
