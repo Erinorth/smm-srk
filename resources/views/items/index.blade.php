@@ -142,7 +142,7 @@
                 <x-slot name="order">[0,'asc'],[1,'asc']</x-slot>
             </x-data-table.data-table-script>
 
-            <x-data-table.data-table-script table-name="_location" ajax-url="/locations">
+            <x-data-table.data-table-script table-name="_location" ajax-url="{{ url('/locations') }}">
                 <x-data-table.column-script column-name="id"/>
                 <x-data-table.column-script column-name="LocationKKS"/>
                 <x-data-table.column-script column-name="LocationName"/>
@@ -154,7 +154,7 @@
                 <x-slot name="order">[0,'desc']</x-slot>
             </x-data-table.data-table-script>
 
-            <x-data-table.data-table-script table-name="_machine" ajax-url="/machines">
+            <x-data-table.data-table-script table-name="_machine" ajax-url="{{ url('/machines') }}">
                 <x-data-table.column-script column-name="id"/>
                 <x-data-table.column-script column-name="MachineName"/>
                 <x-data-table.column-script column-name="action">
@@ -163,7 +163,7 @@
                 <x-slot name="order">[0,'desc']</x-slot>
             </x-data-table.data-table-script>
 
-            <x-data-table.data-table-script table-name="_machine_set" ajax-url="/machine_sets">
+            <x-data-table.data-table-script table-name="_machine_set" ajax-url="{{ url('/machine_sets') }}">
                 <x-data-table.column-script column-name="id"/>
                 <x-data-table.column-script column-name="LocationName"/>
                 <x-data-table.column-script column-name="LocationThaiName"/>
@@ -188,37 +188,37 @@
                 <x-data-table.ajax-reload-script table-id="_location"/>
             </x-data-table.submit-script>
 
-            <x-data-table.submit-script name-i-d="_machine" action-url="machines">
+            <x-data-table.submit-script name-i-d="_machine" action-url="{{ url('/machines') }}">
                 <x-data-table.ajax-reload-script table-id="_machine"/>
             </x-data-table.submit-script>
 
-            <x-data-table.submit-script name-i-d="_machine_set" action-url="machine_sets">
+            <x-data-table.submit-script name-i-d="_machine_set" action-url="{{ url('/machine_sets') }}">
                 <x-data-table.ajax-reload-script table-id="_machine_set"/>
             </x-data-table.submit-script>
 
-            <x-data-table.edit-script edit-name="_location"  edit-url="locations">
+            <x-data-table.edit-script edit-name="_location"  edit-url="{{ url('/locations') }}">
                 <x-data-table.edit-value-script name="LocationKKS"/>
                 <x-data-table.edit-value-script name="LocationName"/>
                 <x-data-table.edit-value-script name="LocationThaiName"/>
                 <x-data-table.edit-value-script name="Allowance"/>
             </x-data-table.edit-script>
 
-            <x-data-table.edit-script edit-name="_machine"  edit-url="machines">
+            <x-data-table.edit-script edit-name="_machine"  edit-url="{{ url('/machines') }}">
                 <x-data-table.edit-value-script name="MachineName"/>
             </x-data-table.edit-script>
 
-            <x-data-table.edit-script edit-name="_machine_set"  edit-url="machine_sets">
+            <x-data-table.edit-script edit-name="_machine_set"  edit-url="{{ url('/machine_sets') }}">
                 <x-data-table.edit-value-script name="location_id"/>
                 <x-data-table.edit-value-script name="machine_id"/>
                 <x-data-table.edit-value-script name="Remark"/>
                 <x-data-table.edit-value-script name="SerialNumber"/>
             </x-data-table.edit-script>
 
-            <x-data-table.delete-script delete-name="_location" url="locations"/>
+            <x-data-table.delete-script delete-name="_location" url="{{ url('/locations') }}"/>
 
-            <x-data-table.delete-script delete-name="_machine" url="machines"/>
+            <x-data-table.delete-script delete-name="_machine" url="{{ url('/machines') }}"/>
 
-            <x-data-table.delete-script delete-name="_machine_set" url="machine_sets"/>
+            <x-data-table.delete-script delete-name="_machine_set" url="{{ url('/machine_sets') }}"/>
         });
     </script>
 @endsection

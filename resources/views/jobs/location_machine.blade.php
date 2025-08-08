@@ -74,7 +74,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "/jobs_location_machine_select/"+project_id, //
+                    url: "{{ url('/jobs_location_machine_select/') }}"+project_id, //
                 },
                 columns: [
                     <x-data-table.column-script column-name="id"/>
