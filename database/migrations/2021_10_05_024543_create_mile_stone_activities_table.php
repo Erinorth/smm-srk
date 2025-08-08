@@ -23,7 +23,7 @@ class CreateMileStoneActivitiesTable extends Migration
             $table->string('Document')->nullable();
             $table->string('Link')->nullable();
             $table->string('Folder')->nullable();
-            $table->foreignId('Responsible')->constrained('employees')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('Responsible')->constrained('job_positions')->onUpdate('cascade')->onDelete('cascade');
             $table->string('Dynamic');
             $table->timestamps();
         });
